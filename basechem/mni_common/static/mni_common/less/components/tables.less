@@ -1,0 +1,149 @@
+@import '../constants.less';
+
+/* We need a "col" width half-way between col-1 and col-2, so we can divide
+half the width into 4 columns.  I can't think of a good name for this right now,
+so just calling it .col-h.
+ */
+.col-lg-h {
+    @media (min-width: 992px) {
+        flex: 0 0 12.5%;
+        max-width: 12.5%;
+    }
+}
+
+table a.stretched-link {
+    /* Don't make the link we use as a stretched-link look like a link. */
+    color:@veryDarkBlue;
+    text-decoration: none;
+}
+
+.table {
+    border: none;
+
+    thead {
+        border: none;
+
+        th {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    }
+
+    thead tr {
+        border: none;
+        background-color: @veryDarkBlue;
+        color: @white;
+    }
+
+    thead th,
+    tbody td {
+        /* A static position will allow Bootstrap's 'stretched-link' CSS class (from
+        a child of the <td>) to work correctly on the <tr> element. */
+        position: static;
+        /* Don't pad the right side of the cells. It contributes to looking like
+        we have too much white space on the right edge of the table. */
+        border: none;
+        padding: 16px 0 16px 16px;
+
+        /* Aligning all but the first column on center makes the white space on
+        the right side of the table look less obvious. */
+        text-align: center;
+
+        &:first-of-type {
+            text-align: left;
+        }
+    }
+
+    tbody tr,
+    thead tr {
+        /* A value of transform other than none will allow Bootstrap's 'stretched-link'
+        CSS class to work correctly on the <td> element. */
+        transform: rotate(0);
+
+        /* Make sure the right-most table cell has the same amount of white space
+        to the right, as the left-most table cell has to the left. */
+        th:last-child,
+        td:last-child {
+            text-align: right;
+            padding-right: 16px;
+        }
+
+        /* Give the right-most table cell a negative left margin, to prevent it from
+        breaking up into 2 lines for as long as possible. */
+        th:last-child div {
+            margin-left: -1 * 16px;
+        }
+    }
+
+    tbody td {
+        font-size: 1rem;
+    }
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: @white;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: @paleBlue;
+}
+
+.table-striped tbody tr:nth-of-type(even) .comments-box {
+    background-color: @white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) .comments-box {
+    background-color: @paleBlue;
+}
+
+.table-hover tbody tr:hover {
+    background-color: @lightGrey;
+}
+
+.table-narrow {
+    thead th,
+    tbody td {
+        padding: 5px 0 5px 16px;
+    }
+}
+
+.table-simple {
+    th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 2px 16px;
+        text-align: center;
+    }
+
+    th {
+        padding: 8px 16px;
+    }
+}
+
+
+// Table filters
+table.dataTable thead .filters th {
+    font-weight: normal !important;
+    color: black !important;
+}
+
+// Make placeholder font smaller in the table filter fields
+th textarea.select2-search__field::placeholder {
+    font-size: 12px;
+    text-overflow: ellipsis;
+}
+
+th .select2-selection__choice__display {
+    font-size: 12px;
+}
+
+// dtfc-fixed-left is the class that datatables applies to left-fixed columns. The css for
+// this class sets the background-color to white (to avoid having a transparent background).
+// This line changes the background from white to our default background colors
+table.dataTable thead tr > .dtfc-fixed-left {
+    background-color: @veryDarkBlue !important;
+}
+
+.table-striped tbody tr:nth-of-type(even) > .dtfc-fixed-left{
+    background-color: @paleBlue;
+}

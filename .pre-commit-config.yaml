@@ -1,0 +1,29 @@
+repos:
+  - repo: https://github.com/hadialqattan/pycln
+    rev: v0.0.1-beta.3
+    hooks:
+    -   id: pycln
+        args: ["-a"]
+  - repo: https://github.com/pycqa/isort
+    rev: 5.6.3
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--skip-glob", "**/common/gypsum_dl"]
+  - repo: https://github.com/psf/black
+    rev: 19.10b0
+    hooks:
+      - id: black
+  - repo: https://github.com/rtts/djhtml
+    rev: v1.4.10
+    hooks:
+      - id: djhtml
+        exclude: '^staticfiles/'
+        args: ["-i", "--tabwidth", "2"]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.4.0
+    hooks:
+      - id: check-docstring-first
+      - id: check-merge-conflict
+      - id: check-json
+      - id: debug-statements
+      - id: no-commit-to-branch

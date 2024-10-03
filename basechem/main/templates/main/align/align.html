@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Align{% endblock %}
+{% load static mni_common_tags %}
+{% block content %}
+  <div class="btn-row" style="float:right">
+    <button type="button" class="btn btn-icon add-comp-btn hover-tooltip" data-moltext="" title="Add compound(s)"><span class="icon icon-48 plant bg-navy" style="margin-top:5px;"></span></button>
+    <button type="button" class="btn btn-icon hover-tooltip" data-toggle="modal" data-target="#hike-modal" title="Change analysis"><span class="icon hiking bg-navy"></span></button>
+  </div>
+  <h1>Collection {{ collection }}</h1>
+  <h3>Align Ligands</h3>
+  {{ collection.pk|json_script:"collection-pk" }}
+  {{ group_name|json_script:"group-name" }}
+  {{ receptor_moltext|json_script:"receptor-moltext" }}
+  {{ receptor_residues|json_script:"receptor-residues" }}
+  <div id="ligand-align-container" class="analysis-container">
+    <div id="form-container">
+      {% include "main/align/table.html" %}
+    </div>
+    <div id="viewer-container">
+      {% include "main/align/viewer.html" %}
+    </div>
+  </div>
+  {% include "mni_common/loading.html" %}
+  {% include "main/components/modals/hike.html" %}
+  {% include "main/align/help_modal.html" %}
+  {% include "main/components/modals/add_comps.html" with form=add_comp_form %}
+  <div id="save-gems-modals"></div>
+{% endblock content %}
+{% block extra-js %}
+  <script>
+    // Style the table with compounds
+    dataTable = $('#align-table').DataTable({
+      lengthChange: false,
+      rowReorder: true,
+      nowrap: true,
+      searching: false,
+      scrollY: "500px",
+      scrollCollapse: true,
+      paging: false,
+      info: false,
+      order: [0, 'asc'],
+      columnDefs: [
+        // Don't allow ordering on the structure, conf selection, and action columns
+        {targets: [1,4,5], orderable: false}
+      ]
+    });
+    enableRowReorder('align-table')
+    // Format the multiple-select dropdown
+    $("#display-reference").select2({
+      placeholder: "Select or type",
+      allowClear: true,
+      width: "100%",
+      templateResult: copyDataId,
+      templateSelection: copyDataId
+    })
+    $(".select-conformer").select2({
+      placeholder: "Conformers",
+      width: "100%",
+      templateResult: copyDataId,
+      templateSelection: copyDataId,
+    })
+    // Fix datatables issue w/ resizing the header when the user resizes the window
+    window.addEventListener('resize', function(){
+      $('#align-table').dataTable().fnAdjustColumnSizing();
+    });
+  </script>
+  {% if group_name %}
+    <script>
+      showLoadingModal({ title: '{{ loading_title }}', message: '{{ loading_message }}'})
+      LigandAlign()
+      function downloadSelected(){
+        const selectedIds = document.getElementById('selected-ids').value;
+        if(selectedIds){
+          const url = "{% url 'downloadresultfile' current_view collection.id group_name 123456789 %}".replace(/123456789/, selectedIds);
+          window.location = url;
+        }
+      }
+    </script>
+  {% endif %}
+{% endblock extra-js %}

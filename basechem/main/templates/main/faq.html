@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}FAQ{% endblock %}
+{% block content %}
+
+  <h1>Frequently Asked Questions</h1>
+
+  <div id="accordion">
+    <!--------  New Card  -------->
+    <div class="card">
+      <div class="card-header">
+        <a class="card-link" data-toggle="collapse" href="#collapse-upload-cpds">
+          What happens when I upload compounds?
+        </a>
+      </div>
+      <div id="collapse-upload-cpds" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          When you upload new molecules, a new CompoundOccurrence is created for every molecule. Compounds are created if they do not exist in the Basechem database yet.
+          Some basic processing happens before saving the CompoundOccurrences. You then get redirected to whichever analysis you have requested.
+          <center>
+            <img style="max-width:70%" src="{% static 'images/faq_images/submit_compounds.png' %}">
+          </center>
+        </div>
+      </div>
+    </div>
+    <!--------  New Card  -------->
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapse-request-flow">
+          What happens when I request an analysis?
+        </a>
+      </div>
+      <div id="collapse-request-flow" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          After your compounds are processed, an anlysis will be triggered in the background. You will see the
+          analysis page with a note saying "Processing..." until your analysis is complete. If the analysis is long
+          running, you will recieve an email with a link back to the results. Feel free to leave the page while you wait!
+          <center>
+            <img style="max-width:70%" src="{% static 'images/faq_images/analysis_view.png' %}">
+          </center>
+        </div>
+      </div>
+    </div>
+    <!--------  New Card  -------->
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapse-cpd-series">
+          How does Basechem select which Series my ligand belongs to?
+        </a>
+      </div>
+      <div id="collapse-cpd-series" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          The compchem and chem leads for each project are responsible for maintining the current
+          Series leads. A DN ID, bound pose file, and ground state file should be uploaded to the Admin page
+          of Basechem for each Series. Upon upload of new compounds, Basechem will generate Canvas fingerprints
+          for each molecule and select the most similar active Series for that molecule.
+        </div>
+      </div>
+    </div>
+    <!--------  New Card  -------->
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapse-what">
+          What are all these things you're referencing!?
+        </a>
+      </div>
+      <div id="collapse-what" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          The images below can help you understand how Basechem organizes your information behind the
+          scenes! This might not make sense to a person unfamiliar with software development but if you're curious
+          you can learn more from an MnI member.
+          <center>
+            <img style="max-width:70%" src="{% static 'images/faq_images/model_structure.png' %}">
+          </center>
+          <center>
+            <img style="max-width:70%" src="{% static 'images/faq_images/view_structure.png' %}">
+          </center>
+        </div>
+      </div>
+    </div>
+    <!--------  New Card  -------->
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapse-emailer">
+          How does the assay emailer work?
+        </a>
+      </div>
+      <div id="collapse-emailer" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          The assay emailer sends project-specific assay data emails on a weekly basis to
+          all users who have subscribed to the project. It also sends ping emails to project leads
+          when new assay data has been uploaded to Dotmatics for their project. See below for
+          more information on how the emailer works, see below. To subscribe to a project, reach out
+          to an admin!
+          <center>
+            <img style="max-width:70%" src="{% static 'images/faq_images/assay_emailer.png' %}">
+          </center>
+        </div>
+      </div>
+    </div>
+    <!--------  New Card  -------->
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapse-torsion-alerts">
+          What do the torsion alerts in align and dock mean?
+        </a>
+      </div>
+      <div id="collapse-torsion-alerts" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          After the align and dock analyses are complete, the returned conformations are passed through
+          a script to determine torsion strain of rotatable bonds. Clicking the <span class="bg-blue icon warning"></span> icon
+          will add green, yellow, and red highlights to demonstrate which dihedrals in the returned conformation are
+          realistic. Green dihedrals have torsion strains less than .5 TEUs (Torsion Energy Units), yellow/orange dihedrals have torsion strains
+          less than 1.5 TEUs, and red dihedrals have torsion strains greater than 1.5 TEUs.
+          <center>
+            <img style="max-width:70%" src="{% static 'images/faq_images/torsion_alerts.png' %}">
+          </center>
+        </div>
+      </div>
+    </div>
+    <!--------  New Card  -------->
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapse-not-answered">
+          My question isn't answered here.
+        </a>
+      </div>
+      <div id="collapse-not-answered" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          If you have any other questions about Basechem or issues with your submission, please contact admins or submit an issue on Github.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content %}

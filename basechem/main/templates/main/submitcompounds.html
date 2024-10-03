@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static crispy_forms_tags %}
+{% load static %}
+{% block title %}{{ tab_title }}{% endblock %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  <p>{{ directions }}</p>
+  {{ task_id|json_script:"task-id" }}
+  {% if nextview %}
+    <form id="form" method="post" enctype="multipart/form-data" class="blue-form">
+      {% csrf_token %}
+      {% if form.errors %}
+        <div id="errors">
+          <p id="error_text">{{ form|as_crispy_errors }}</p>
+        </div>
+      {% endif %}
+      <div style="display:flex; flex-direction:row; padding:5px; justify-content:space-between">
+        <div style="width:45%">
+          {% for field in form %}
+            {% if field.name not in form.compound_upload_fields %}
+              <div id="{{ field.label }}_form">
+                <p>{{ field|as_crispy_field }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div style="width:45%">
+          {% for field in form %}
+            {% if field.name in form.compound_upload_fields %}
+              <div id="{{ field.label }}_form">
+                <p>{{ field|as_crispy_field }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-denali-primary" onclick="showLoadingModal({ title: '{{ loading_title }}', formId: 'form' })">{{ title }}!</button>
+      </div>
+    </form>
+  {% endif %}
+  {% include "mni_common/loading.html" %}
+{% endblock content %}
+{% block extra-js %}
+  <script>
+    const taskId= JSON.parse(document.getElementById('task-id').textContent);
+    if(taskId){
+      checkTask(3000, taskId, "task")
+      showLoadingModal({ title:"{{ loading_title }}"});
+    }
+  </script>
+  <script>
+    // Manually add a "required" label to the collection field, because it is
+    // required, but `None` is a valid option
+    const collection_label = document.querySelector("label[for=id_collection]")
+    if(collection_label){
+      collection_label.classList.add("requiredField")
+      const asteriskField = document.createElement("span");
+      asteriskField.innerText = "*"
+      asteriskField.classList.add("asteriskField")
+      collection_label.appendChild(asteriskField);
+      // Show/hide project/SDF/moltext fields based on choice for "collection"
+      toggleCollectionFields()
+    }
+    $("select[name=collection]").change(() => toggleCollectionFields())
+    function toggleCollectionFields(){
+      const selected = $("select[name=collection]").find(":selected").val()
+      const show = selected == ""
+      toggleElement("div_id_name", show, false)
+      toggleElement("div_id_project", show, true)
+      toggleElement("div_id_upload_file", show, false)
+      toggleElement("div_id_moltext", show, false)
+      toggleElement("div_id_sketcher", show, false)
+    }
+  </script>
+{% endblock extra-js %}

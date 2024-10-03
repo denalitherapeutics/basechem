@@ -1,0 +1,12 @@
+{% load static tags mni_common_tags %}
+<center>
+  {{ compound|as_transparent_svg:"100,100" }}
+  <br><span class="{% if compound.assayed_comp %}assayed{% endif %}">{{ compound.name }}</span>
+  {% for assay, analyses in collection.metadata.assays.items %}
+    {% for analysis in analyses %}
+      {% with compound.measured_data.assay_results|dict_get:assay|dict_get:analysis as assay_result %}
+        <br><span class="{{ assay_result|color_filter:'assay_result' }}">{{ assay_result|default_if_none:"&nbsp;" }}</span>
+      {% endwith %}
+    {% endfor %}
+  {% endfor %}
+</center>

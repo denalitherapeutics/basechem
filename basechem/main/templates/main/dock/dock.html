@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Dock{% endblock %}
+{% load static mni_common_tags %}
+{% block content %}
+  <div class="btn-row" style="float:right">
+    <button type="button" class="btn btn-icon add-comp-btn hover-tooltip" data-moltext="" title="Add compound(s)"><span class="icon icon-48 plant bg-navy" style="margin-top:5px;"></span></button>
+    <button type="button" class="btn btn-icon hover-tooltip" data-toggle="modal" data-target="#hike-modal" title="Change analysis"><span class="icon hiking bg-navy"></span></button>
+  </div>
+  <h1>Collection {{ collection }}</h1>
+  <h3>Dock Compounds</h3>
+  {{ collection.pk|json_script:"collection-pk" }}
+  {{ group_name|json_script:"group-name" }}
+  <div id="dock-container" class="analysis-container">
+    <div id="form-container">
+      {% include "main/dock/table.html" %}
+    </div>
+    <div id="viewer-container">
+      {% include "main/dock/viewer.html" %}
+    </div>
+  </div>
+  {% include "mni_common/loading.html" %}
+  {% include "main/components/modals/hike.html" %}
+  {% include "main/components/modals/add_comps.html" with form=add_comp_form %}
+  <div id="save-gems-modals"></div>
+{% endblock content %}
+{% block extra-js %}
+  {################## STYLE THE FORM COMPONENTS AND DATA TABLES ##################}
+  <script>
+    // Style the table with compounds
+    var dataTable = $('#dock-table').DataTable({
+      lengthChange: false,
+      rowReorder: true,
+      nowrap: true,
+      searching: false,
+      scrollY: "400px",
+      scrollCollapse: true,
+      paging: false,
+      info: false,
+      bSortCellsTop: true,
+      order: [0, 'asc'],
+      columnDefs: [
+        // Don't allow ordering on the structure, pose selection, and action columns
+        {targets: [1,4,5], orderable: false}
+      ]
+    });
+    enableRowReorder('dock-table')
+    // Select2 configurations
+    $('#display-reference').select2({
+      placeholder: "Select or type",
+      allowClear: true,
+      width: "100%",
+      templateResult: copyDataId,
+      templateSelection: copyDataId
+    })
+    $('#display-receptor').select2({
+      allowClear: true,
+      width: "100%",
+      templateResult: copyDataId,
+      templateSelection: copyDataId
+    })
+    $(".select-pose").select2({
+      placeholder: "Poses",
+      width: "100%",
+      templateResult: copyDataId,
+      templateSelection: copyDataId,
+    })
+    // Fix datatables issue w/ resizing the header when the user resizes the window
+    window.addEventListener('resize', function(){
+      $('#dock-table').dataTable().fnAdjustColumnSizing();
+    });
+  </script>
+  {% if group_name %}
+    <script>
+      showLoadingModal({ title: '{{ loading_title }}', message: '{{ loading_message }}'})
+      Dock()
+    </script>
+  {% endif %}
+{% endblock extra-js %}

@@ -1,0 +1,29 @@
+{% load static crispy_forms_tags %}
+<div class="modal" id="add-comp-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="add-comp-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="add-comp-modal-label">Add Compound(s) to Collection</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form class="transparent-form ajax-form" id="add-comp-form" form-errors="add-comp-errors" action="{% if group_name %}{% url 'add_comp' current_view collection.pk group_name %}{% else %}{% url 'add_comp' current_view collection.pk %}{% endif %}" method="POST" enctype="multipart/form-data" data-modal-id="add-comp-modal">
+        <div class="modal-body">
+          <div class="success" id="add-comp-success"></div>
+          <div class="errors" id="add-comp-errors"></div>
+          {% csrf_token %}
+          {% crispy form %}
+          <center id="form-loading-spinner" style="display:none;">
+            <div class="spinner"></div>
+            <p>Processing compounds</p>
+          </center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-denali-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-denali-primary">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

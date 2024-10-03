@@ -1,0 +1,17 @@
+{% load tags mni_common_tags %}
+<div class="propcalc-grid-item" id="co-{{ co.id }}">
+  <div>{{ co.compound|as_svg:"200,100" }}</div>
+  <p>{{ co.compound.name }}</p>
+  {% with property_results|dict_get:co.id as co_props %}
+    {% if co_props %}
+      <div class="row">
+        <div id="base-properties-{{ co.pk }}" class="base-properties-container {% if "HLM Prediction" in props %}grid-{{ co_props|get_propcalc_val:"HLM Prediction"|first|color_filter:'HLM Prediction' }}{% endif %}">
+          {{ co_props|get_propcalc_val:"MW" }}/<span class="propcalc-grid-value {{ co_props|get_propcalc_val:"TPSA"|color_filter:"TPSA" }}">{{ co_props|get_propcalc_val:"TPSA" }}</span>/<span class="propcalc-grid-value {% if "LogD Prediction" in props %}{{ co_props|get_propcalc_val:"LogD Prediction"|first|color_filter:"LogD Prediction" }}{% endif %}">{{ co_props|get_propcalc_val:"LogD Prediction"|first|default:"--" }}</span>
+        </div>
+        <button type="button" class="btn btn-icon" onclick="copyToClipboard('#base-properties-{{ co.pk }}', true)"><span class="icon copy"></span></button>
+      </div>
+    {% else %}
+      <div class="task-status-update" id="co-{{ co.id }}">Job Running</div>
+    {% endif %}
+  {% endwith %}
+</div>

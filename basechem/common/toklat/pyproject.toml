@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools", "wheel", "setuptools-scm"]
+
+[project]
+name = "toklat"
+description = "Interpretable and trainable ligand pose re-scoring."
+authors = [{ name = "Inductive Bio & Denali Tx" }]
+dependencies = [
+    "pandas<2.2.0",
+    "prolif>=2.0.0",
+    "py3Dmol",
+    "numpy",
+    "rdkit>=2023.9.6",
+    "scikit-learn",
+    "scipy",
+]
+version = "1.0.0"
+
+[project.optional-dependencies]
+dev = ["pre-commit", "ipykernel"]
+
+[tool.isort]
+profile = "black"

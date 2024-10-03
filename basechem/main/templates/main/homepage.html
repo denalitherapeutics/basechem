@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static crispy_forms_tags %}
+{% block title %}Basechem{% endblock %}
+{% block content %}
+  <div style="padding-left: 10px;">
+    <h1>Welcome to Basechem 2.0!</h1>
+  </div>
+  <div class="mini-app-container">
+    <div class="mini-app">
+      <h2 class="title">Go to Project</h2>
+      <div class="mini-app-projects">
+        {% for project in projects %}
+          <h4><a style="margin-right:10px" href="{% url 'project' project.code %}">{{ project.code }}</a></h4>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="mini-app">
+      <a href="{% url 'submit' 'propcalc' %}">
+        <h2 class="title">Calculate Properties</h2>
+      </a>
+      <p class="subtitle">Calculate molecular properties and generate unique tautomers</p>
+    </div>
+    <div class="mini-app">
+      <a href="{% url 'submit' 'align' %}">
+        <h2 class="title">Align Ligands</h2>
+      </a>
+      <p class="subtitle">Align compounds to a parent</p>
+    </div>
+    <div class="mini-app">
+      <a href="{% url 'submit' 'dock' %}">
+        <h2 class="title">Dock Compounds</h2>
+      </a>
+      <p class="subtitle">Dock compounds into a binding site</p>
+    </div>
+    <div class="mini-app">
+      <a href="{% url 'submit' 'esp' %}">
+        <h2 class="title">Generate ESP</h2>
+      </a>
+      <p class="subtitle">Generate ESP maps</p>
+    </div>
+    <div class="mini-app">
+      <a href="{% url 'submit' 'torsion' %}">
+        <h2 class="title">Torsion Scan</h2>
+      </a>
+      <p class="subtitle">Explore torsion dihedrals using QM</p>
+    </div>
+    <div class="mini-app">
+      <a href="{% url 'submit' 'mmp' %}">
+        <h2 class="title">MMP Analysis</h2>
+      </a>
+      <p class="subtitle">Explore matched molecular pairs</p>
+    </div>
+  </div>
+
+{% endblock %}

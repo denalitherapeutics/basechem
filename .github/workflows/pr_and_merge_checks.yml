@@ -1,0 +1,46 @@
+name: PR Tests and Style Checks
+
+on:
+  pull_request:
+    branches: [ "*" ]
+  push: 
+    branches: [ "main" ]
+
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+
+jobs:
+  tests-and-style-checks:
+    name: Run tests and style checks
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+    services: # This service isn't actually used right now but is here for future reference
+      postgres: 
+        image: mcs07/postgres-rdkit
+        env:
+          POSTGRES_DB: basechem
+          POSTGRES_USER: basechem
+          POSTGRES_PASSWORD: basechem
+          POSTGRES_ETENSIONS: rdkit
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    container: 
+      image: lidauch/basechem-github:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Check style
+        run: |  
+          source /root/.bashrc
+          pip install -r requirements/base.txt
+          black --exclude='roles|node_modules|\.git|.*cache.*|\.tox|venv|common/gypsum_dl|common/apbs|common/ESP_DNN' --check . 
+          isort . --profile black --skip-glob "**/common/gypsum_dl" --skip-glob "**/common/apbs" --skip-glob "**/common/ESP_DNN" --check-only
+

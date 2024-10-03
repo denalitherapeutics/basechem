@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}{{ project.code }}{% endblock %}
+{% load static %}
+{% load tags %}
+{% block content %}
+  <div class="btn-row" style="float:right; margin:0px">
+    <button type="button" class="btn btn-icon hover-tooltip" data-toggle="modal" data-target="#sss-modal" title="Search"><span class="icon icon-48 binoculars bg-navy"></span></button>
+  </div>
+  <h1>{{ project.code }}{% if search_type %} Search Results{% endif %}</h1>
+  <div class="btn-row">
+    {% if search_type %}
+      <a class="btn btn-denali-secondary" href="{% url 'project' project.code %}">
+        <span class="icon arrow-left"></span>
+        <span class="label">Project Home</span>
+      </a>
+    {% endif %}
+    {% if project.maestro_prj %}
+      <button style="margin-right:10px;" id="download-propcalc-results" type="button" class="btn btn-denali-secondary" onclick="window.location='{{ project.maestro_prj }}' ">
+        Go to Maestro Prj File
+      </button>
+    {% endif %}
+  </div>
+  <p>
+
+    {% if search_type == "sss" %}
+      View all {{ project.code }} compounds with substructure:<br>{{ smiles_svg|safe }}
+    {% elif search_type == "exact" %}
+      View all {{ project.code }} compounds that exactly match:<br>{{ smiles_svg|safe }}
+    {% else %}
+      View all compounds any user has uploaded for {{ project.code }}!
+    {% endif %}
+  </p>
+  <div style="display: flex; flex-direction: row">
+    <div style="width:100%; overflow-x: scroll">
+      <table id="compound-table" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>Compound</th>
+            <th>Name</th>
+            <th>Series</th>
+            <th>Last Date</th>
+            <th>Collection(s)</th>
+            <th>User(s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for compound in compounds %}
+            <tr>
+              <td><img src="{{ compound.svg_file.url }}" loading="lazy"/></td>
+              <td>{{ compound.name }}</td>
+              <td>{{ compound.series.name }}</td>
+              <td>{{ compound|get_most_recent_date }}</td>
+              <td>{{ compound|get_collection_urls }}</td>
+              <td>{{ compound|get_user_ids }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% include "main/components/modals/substructure_search.html" with form=sss_form %}
+{% endblock content %}
+
+{% block extra-js %}
+  <script>
+    $('#compound-table').DataTable(
+      {
+        lengthChange: false,
+        searching: true,
+        nowrap: true,
+        pagingType: "simple_numbers",
+        info: false,
+        columnDefs: [
+          { type: 'date', 'targets': [3] },
+          // Don't allow ordering on the image, collection, and user columns
+          {targets: [0,4,5], orderable: false}
+        ],
+        // Sort by most recent date and then compound name
+        "order": [[ 3, 'desc' ], [ 1, 'asc' ]]
+      }
+    );
+  </script>
+{% endblock extra-js %}

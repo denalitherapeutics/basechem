@@ -1,0 +1,26 @@
+{% load tags mni_common_tags %}
+<tr class="compound-row" id="co-{{ co.id }}" data-conf-prefix="c{{ co.compound.id }}-co{{ co.id }}" data-new-row="{{ new_row }}">
+  <td class="order-column reorder">{{ row_num }}</td>
+  <td style="width:200px">{{ co.compound|as_svg:"200,50" }}</td>
+  <td id="co-{{ co.id }}-name">{{ co.compound.name }}</td>
+  <td>{{ co.saved_from }} {{ co.display_gem_without_series }}</td>
+  {% if group_name %}
+    <td><span class="delta-energy" id="co-{{ co.pk }}"></span></td>
+    <td style="width:130px">
+      <span class="task-status" id="co-{{ co.id }}">Job running</span>
+      {% call_object_method co "pick_most_relevant_dihedral" pioneer_dihedral_smarts pioneer_dihedral_atoms as dihedral %}
+      {% call_object_method co "get_torsion_task_name" pioneer_dihedral_smarts dihedral.1 as task_name %}
+      <div style="display:none;">
+        <button class="btn btn-denali-secondary btn-table toggle-compound" id="co-{{ co.id }}" data-task-name="{{ task_name }}">Show</button>
+      </div>
+    </td>
+    <td class="d-flex justify-content-end">
+      <div class="btn-row flex-nowrap">
+        {% include "main/components/tables/save_gems_btn.html" %}
+        {% include "main/components/tables/add_comps_btn.html" %}
+      </div>
+    </td>
+  {% else %}
+    <td>{{ co.compound.series.dn_id }}</td>
+  {% endif %}
+</tr>

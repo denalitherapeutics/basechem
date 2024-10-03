@@ -1,0 +1,37 @@
+{% load static crispy_forms_tags tags mni_common_tags %}
+{# Reference dropdown + submit button #}
+<form id="new-analysis-form" class="analysis-form ajax-form" form-errors="new-analysis-errors" action="{% url 'align' collection.id %}" method="post" enctype="multipart/form-data" novalidate>
+  <div class="errors" id="new-analysis-errors"></div>
+  {% csrf_token %}
+  <div style="display:flex; flex-direction:row">
+    <div style="width:80%;">
+      {{ form.reference|as_crispy_field }}
+    </div>
+    <button id="align-btn" class="btn btn-denali-primary go-btn" type="submit" value="Submit">Align!</button>
+  </div>
+  <small id="align-help" class="help-text text-muted analysis-help">Choose the ligand that the selected compounds will be aligned to</small>
+</form>
+<div id="compounds-table-container">
+  <table id="align-table" class="table table-striped table-bordered full-width">
+    <thead>
+      <tr>
+        <th class="order-column">Order</th>
+        <th style="width:200px">Structure</th>
+        <th>Compound</th>
+        <th>Series</th>
+        <th style="width:130px">
+          <div class="d-flex align-items-center">
+            <span class="hover-tooltip icon question-mark bg-orange mr-1" data-toggle="tooltip" data-placement="right" title="{{ energytooltip }}"></span>
+            RMSD - RelE (kcal/mol)
+          </div>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for co in compound_occurrences %}
+        {% include "main/align/table_row.html" with row_num=forloop.counter %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

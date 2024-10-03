@@ -1,0 +1,33 @@
+{% load static crispy_forms_tags tags mni_common_tags %}
+<div id="propcalc-table-container">
+  <table id="propcalc-table" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>
+        <th class="order-column">Order</th>
+        <th style="width:250px">Compound</th>
+        <th>ID</th>
+        {% for prop in props %}
+          <th>
+            <div class="d-flex align-items-center">
+              <span class="mr-1">{{ prop }}</span>
+              {% if "TPSA" == prop %}
+                <span class="hover-tooltip icon question-mark bg-orange" data-toggle="tooltip" data-placement="bottom" data-html=true title="Values are colored using this scale:<br><img src='{% static 'images/propcalc/tpsa-color-legend.svg' %}' width=200px />"></span>
+              {% elif "LogD Prediction" == prop %}
+                <span id="logd-tooltip" class="hover-tooltip icon question-mark bg-orange" data-toggle="tooltip" data-placement="bottom" data-html=true title="A border around the number indicates a measured value. This model is built with data through ?. Values are colored using this scale: <br> <img src='{% static 'images/propcalc/logd-color-legend.svg' %}' width=200px />"></span>
+              {% elif "HLM Prediction" == prop %}
+                <span id="hlm-tooltip" class="hover-tooltip icon question-mark bg-orange" data-toggle="tooltip" data-placement="bottom" data-html=true title="A border around the number indicates a measured value. This model is built with data through ?. Values are colored using this scale: <br> <img src='{% static 'images/propcalc/hlm-color-legend.svg' %}' width=200px />"></span>
+              {% elif "RLM Prediction" == prop %}
+                <span id="rlm-tooltip" class="hover-tooltip icon question-mark bg-orange" data-toggle="tooltip" data-placement="bottom" data-html=true title="A border around the number indicates a measured value. This model is built with data through ?. Values are colored using this scale: <br> <img src='{% static 'images/propcalc/rlm-color-legend.svg' %}' width=200px />"></span>
+              {% endif %}
+            </div>
+        {% endfor %}
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for co in compound_occurrences %}
+        {% include "main/propcalc/table_row.html" with row_num=forloop.counter %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

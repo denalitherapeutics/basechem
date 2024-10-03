@@ -1,0 +1,51 @@
+{% load static mni_common_tags %}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Roboto:b&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+    <p>Basechem docked {{ total_num_cos }} CompoundOccurrence{{ total_num_cos|pluralize }} to compare the Toklat and rDock scores. The results are summarized below:</p>
+    {% for i in "123" %}
+      {% with cos=compound_occurrences|dict_get:i %}
+        {% if cos %}
+          <p>{{ cos|length }} CompoundOccurrence{{ cos|length|pluralize }} had {{ i }} differences in the 3 top poses chosen:</p>
+          <div>{% for co in cos %}{% if not forloop.first %}, {% endif %}<a href="{{ co.admin_url }}" target="_blank", rel="noreferrer noopener">{{ co.compound.name }}</a>{% endfor %}</div>
+          <br>
+        {% endif %}
+      {% endwith %}
+    {% endfor %}
+
+    {% with cos=compound_occurrences|dict_get:"0"%}
+      {% if cos %}
+        <p>
+          There {{ cos|length|pluralize:"was,were" }} {{ cos|length }} CompoundOccurrence{{ cos|length|pluralize }} whose top poses were predicted to be
+          the same using the Toklat and rDock scoring method:
+        </p>
+        <div>{% for co in cos %}{% if not forloop.first %}, {% endif %}<a href="{{ co.admin_url }}" target="_blank", rel="noreferrer noopener">{{ co.compound.name }}</a>{% endfor %}</div>
+        <br>
+      {% endif %}
+    {% endwith %}
+
+    {% with cos=compound_occurrences|dict_get:"skipped"%}
+      {% if cos %}
+        <p>
+          {{ cos|length }} CompoundOccurrence{{ cos|length|pluralize }} {{ cos|length|pluralize:"was,were" }} skipped because there was some error while running rDock or Toklat scoring:
+        </p>
+        <div>{% for co in cos %}{% if not forloop.first %}, {% endif %}<a href="{{ co.admin_url }}" target="_blank", rel="noreferrer noopener">{{ co.compound.name }}</a>{% endfor %}</div>
+        <br>
+      {% endif %}
+    {% endwith %}
+
+    {% if errors %}
+      <p>Errors encountered:</p>
+      <ul>
+        {% for error in errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <p>Thanks for using Basechem!</p>
+  </body>
+</html>

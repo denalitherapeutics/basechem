@@ -1,0 +1,40 @@
+@import "../constants.less";
+
+@keyframes spinner {
+    0% {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    }
+    100% {
+         transform: translate3d(-50%, -50%, 0) rotate(360deg);
+    }
+}
+.spinner {
+    height: 100px;
+    opacity: 1;
+    position: relative;
+    transition: opacity linear 0.1s;    
+    &::before {
+        animation: 2s linear infinite spinner;
+        border: solid 5px @lighterGrey;
+        border-bottom-color: @orange;
+        border-radius: 50%;
+        content: "";
+        height: 80px;
+        left: 50%;
+        opacity: inherit;
+        position: absolute;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        transform-origin: center;
+        width: 80px;
+        will-change: transform;
+    }
+}
+
+.spinner.small {
+    height: 50px;
+    &::before {
+        height: 40px;
+        width: 40px;
+    }
+}

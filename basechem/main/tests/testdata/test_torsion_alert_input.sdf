@@ -1,0 +1,854 @@
+VSM-00000000058
+                    3D
+ Schrodinger Suite 2022-1.
+ 26 26  0  0  1  0            999 V2000
+  157.3834  127.6343  194.7284 C   0  0  0  0  0  0
+  161.1027  128.3732  192.4553 C   0  0  0  0  0  0
+  161.3973  130.1600  194.0698 C   0  0  0  0  0  0
+  162.0641  128.9481  191.5918 C   0  0  0  0  0  0
+  162.3842  130.7233  193.2433 C   0  0  0  0  0  0
+  158.4184  128.2606  193.8416 C   0  0  1  0  0  0
+  160.7582  128.9696  193.6903 C   0  0  0  0  0  0
+  162.7050  130.1542  191.9942 C   0  0  0  0  0  0
+  159.7231  128.3433  194.5771 C   0  0  1  0  0  0
+  158.5780  127.4919  192.7067 O   0  0  0  0  0  0
+  163.6532  130.7429  191.1826 O   0  0  0  0  0  0
+  159.5543  129.1566  195.7777 N   0  3  0  0  0  0
+  157.2574  128.2415  195.6248 H   0  0  0  0  0  0
+  157.7054  126.6320  195.0108 H   0  0  0  0  0  0
+  156.4353  127.5743  194.1939 H   0  0  0  0  0  0
+  160.6117  127.4575  192.1592 H   0  0  0  0  0  0
+  161.1493  130.6291  195.0110 H   0  0  0  0  0  0
+  162.3063  128.4831  190.6471 H   0  0  0  0  0  0
+  162.8813  131.6305  193.5549 H   0  0  0  0  0  0
+  158.0965  129.2630  193.5592 H   0  0  0  0  0  0
+  160.0451  127.3409  194.8595 H   0  0  0  0  0  0
+  158.8738  126.5510  192.8718 H   0  0  0  0  0  0
+  163.8350  130.2600  190.3260 H   0  0  0  0  0  0
+  160.4328  129.2122  196.2729 H   0  0  0  0  0  0
+  158.8574  128.7349  196.3748 H   0  0  0  0  0  0
+  159.2560  130.0854  195.5160 H   0  0  0  0  0  0
+  1  6  1  0  0  0
+  1 13  1  0  0  0
+  1 14  1  0  0  0
+  1 15  1  0  0  0
+  2  4  2  0  0  0
+  2  7  1  0  0  0
+  2 16  1  0  0  0
+  3  5  1  0  0  0
+  3  7  2  0  0  0
+  3 17  1  0  0  0
+  4  8  1  0  0  0
+  4 18  1  0  0  0
+  5  8  2  0  0  0
+  5 19  1  0  0  0
+  6 10  1  0  0  0
+  6  9  1  0  0  0
+  6 20  1  0  0  0
+  7  9  1  0  0  0
+  8 11  1  0  0  0
+  9 12  1  0  0  0
+  9 21  1  0  0  0
+ 10 22  1  0  0  0
+ 11 23  1  0  0  0
+ 12 24  1  0  0  0
+ 12 25  1  0  0  0
+ 12 26  1  0  0  0
+M  CHG  1  12   1
+M  END
+> <s_m_source_file>
+/home/app/web/public/media/compounds/VSM-00000000058/58.sdf
+
+> <i_m_source_file_index>
+1
+
+> <i_lp_mmshare_version>
+57137
+
+> <i_f3d_flags>
+0
+
+> <s_epik_input>
+W0NIM11bQ0BIXShbT0hdKVtDQEhdKFtOSDJdKWMxW2NIXVtjSF1jKFtPSF0pW2NIXVtjSF0x
+
+> <s_epik_cmdline>
+J2VwaWtfcHl0aG9uJywgJy1waCcsICc3LjAnLCAnLXRuJywgJzgnLCAnLW1hJywgJzIwMCcsICctaW1hZScsICc8aW5maWxlLm1hZT4nLCAnLW9tYWUnLCAnPG91dGZpbGUubWFlPic=
+
+> <r_lp_tautomer_probability>
+1
+
+> <r_epik_Ionization_Penalty>
+  0.0360
+
+> <r_epik_Ionization_Penalty_Charging>
+  0.0295
+
+> <r_epik_Ionization_Penalty_Neutral>
+  0.0065
+
+> <r_epik_State_Penalty>
+  0.0357
+
+> <r_epik_Charging_Adjusted_Penalty>
+0.0652485
+
+> <i_epik_Tot_Q>
+1
+
+> <i_epik_Tot_abs_Q>
+1
+
+> <s_lp_Force_Field>
+S-OPLS
+
+> <r_lp_Energy>
+12.2447
+
+> <b_lp_Chiralities_Consistent>
+1
+
+> <s_lp_Variant>
+VSM-00000000058-1
+
+> <r_f3d_energy>
+60.78036
+
+> <r_f3d_relative_energy>
+27.34588
+
+> <r_phase_Shape_Sim>
+0.39964480373221
+
+$$$$
+VSM-00000000058
+                    3D
+ Schrodinger Suite 2022-1.
+ 26 26  0  0  1  0            999 V2000
+  159.1618  126.5892  194.2732 C   0  0  0  0  0  0
+  161.8709  129.4004  194.4610 C   0  0  0  0  0  0
+  160.4430  129.3190  192.5129 C   0  0  0  0  0  0
+  162.9811  129.5761  193.6336 C   0  0  0  0  0  0
+  161.5576  129.4921  191.6866 C   0  0  0  0  0  0
+  158.4510  127.9024  194.5652 C   0  0  1  0  0  0
+  160.5842  129.2646  193.9122 C   0  0  0  0  0  0
+  162.8175  129.6197  192.2558 C   0  0  0  0  0  0
+  159.3937  129.1114  194.8358 C   0  0  1  0  0  0
+  157.5576  128.2581  193.4931 O   0  0  0  0  0  0
+  163.9326  129.7923  191.4953 O   0  0  0  0  0  0
+  158.5375  130.3373  194.7373 N   0  3  0  0  0  0
+  158.4325  125.7739  194.2121 H   0  0  0  0  0  0
+  159.6740  126.6095  193.3065 H   0  0  0  0  0  0
+  159.8843  126.3455  195.0578 H   0  0  0  0  0  0
+  162.0379  129.3680  195.5369 H   0  0  0  0  0  0
+  159.4689  129.2155  192.0372 H   0  0  0  0  0  0
+  163.9770  129.6760  194.0605 H   0  0  0  0  0  0
+  161.4269  129.5229  190.6080 H   0  0  0  0  0  0
+  157.8154  127.7663  195.4489 H   0  0  0  0  0  0
+  159.7407  129.0672  195.8750 H   0  0  0  0  0  0
+  157.0738  127.4470  193.2310 H   0  0  0  0  0  0
+  163.6966  129.7621  190.5528 H   0  0  0  0  0  0
+  159.0959  131.1866  194.6014 H   0  0  0  0  0  0
+  157.9169  130.4500  195.5434 H   0  0  0  0  0  0
+  157.9358  130.2002  193.9073 H   0  0  0  0  0  0
+  1  6  1  0  0  0
+  1 13  1  0  0  0
+  1 14  1  0  0  0
+  1 15  1  0  0  0
+  2  4  2  0  0  0
+  2  7  1  0  0  0
+  2 16  1  0  0  0
+  3  5  1  0  0  0
+  3  7  2  0  0  0
+  3 17  1  0  0  0
+  4  8  1  0  0  0
+  4 18  1  0  0  0
+  5  8  2  0  0  0
+  5 19  1  0  0  0
+  6 10  1  0  0  0
+  6  9  1  0  0  0
+  6 20  1  0  0  0
+  7  9  1  0  0  0
+  8 11  1  0  0  0
+  9 12  1  0  0  0
+  9 21  1  0  0  0
+ 10 22  1  0  0  0
+ 11 23  1  0  0  0
+ 12 24  1  0  0  0
+ 12 25  1  0  0  0
+ 12 26  1  0  0  0
+M  CHG  1  12   1
+M  END
+> <s_m_source_file>
+/home/app/web/public/media/compounds/VSM-00000000058/58.sdf
+
+> <i_m_source_file_index>
+1
+
+> <i_lp_mmshare_version>
+57137
+
+> <i_f3d_flags>
+0
+
+> <s_epik_input>
+W0NIM11bQ0BIXShbT0hdKVtDQEhdKFtOSDJdKWMxW2NIXVtjSF1jKFtPSF0pW2NIXVtjSF0x
+
+> <s_epik_cmdline>
+J2VwaWtfcHl0aG9uJywgJy1waCcsICc3LjAnLCAnLXRuJywgJzgnLCAnLW1hJywgJzIwMCcsICctaW1hZScsICc8aW5maWxlLm1hZT4nLCAnLW9tYWUnLCAnPG91dGZpbGUubWFlPic=
+
+> <r_lp_tautomer_probability>
+1
+
+> <r_epik_Ionization_Penalty>
+0.0360141
+
+> <r_epik_Ionization_Penalty_Charging>
+0.0295478
+
+> <r_epik_Ionization_Penalty_Neutral>
+0.00646627
+
+> <r_epik_State_Penalty>
+0.0357007
+
+> <r_epik_Charging_Adjusted_Penalty>
+0.0652485
+
+> <i_epik_Tot_Q>
+1
+
+> <i_epik_Tot_abs_Q>
+1
+
+> <s_lp_Force_Field>
+S-OPLS
+
+> <r_lp_Energy>
+12.2447
+
+> <b_lp_Chiralities_Consistent>
+1
+
+> <s_lp_Variant>
+VSM-00000000058-1
+
+> <s_conf_id>
+3
+
+> <r_mmff_energy>
+27.9276564953744
+
+> <r_bc_rmsd>
+1.84784930698319
+
+$$$$
+VSM-00000000058
+                    3D
+ Schrodinger Suite 2022-1.
+ 26 26  0  0  1  0            999 V2000
+  159.1619  126.5892  194.2733 C   0  0  0  0  0  0
+  161.8709  129.4004  194.4610 C   0  0  0  0  0  0
+  160.4429  129.3190  192.5129 C   0  0  0  0  0  0
+  162.9810  129.5761  193.6336 C   0  0  0  0  0  0
+  161.5576  129.4921  191.6867 C   0  0  0  0  0  0
+  158.4511  127.9024  194.5651 C   0  0  1  0  0  0
+  160.5842  129.2646  193.9121 C   0  0  0  0  0  0
+  162.8176  129.6197  192.2558 C   0  0  0  0  0  0
+  159.3937  129.1115  194.8358 C   0  0  1  0  0  0
+  157.5576  128.2582  193.4932 O   0  0  0  0  0  0
+  163.9326  129.7922  191.4952 O   0  0  0  0  0  0
+  158.5375  130.3372  194.7373 N   0  3  0  0  0  0
+  159.6740  126.6094  193.3064 H   0  0  0  0  0  0
+  158.4324  125.7739  194.2121 H   0  0  0  0  0  0
+  159.8843  126.3455  195.0579 H   0  0  0  0  0  0
+  162.0380  129.3680  195.5369 H   0  0  0  0  0  0
+  159.4689  129.2155  192.0371 H   0  0  0  0  0  0
+  163.9770  129.6760  194.0605 H   0  0  0  0  0  0
+  161.4269  129.5229  190.6081 H   0  0  0  0  0  0
+  157.8155  127.7663  195.4490 H   0  0  0  0  0  0
+  159.7407  129.0672  195.8750 H   0  0  0  0  0  0
+  157.0738  127.4471  193.2310 H   0  0  0  0  0  0
+  163.6967  129.7622  190.5528 H   0  0  0  0  0  0
+  157.9168  130.4499  195.5434 H   0  0  0  0  0  0
+  159.0959  131.1867  194.6014 H   0  0  0  0  0  0
+  157.9358  130.2002  193.9072 H   0  0  0  0  0  0
+  1  6  1  0  0  0
+  1 13  1  0  0  0
+  1 14  1  0  0  0
+  1 15  1  0  0  0
+  2  4  2  0  0  0
+  2  7  1  0  0  0
+  2 16  1  0  0  0
+  3  5  1  0  0  0
+  3  7  2  0  0  0
+  3 17  1  0  0  0
+  4  8  1  0  0  0
+  4 18  1  0  0  0
+  5  8  2  0  0  0
+  5 19  1  0  0  0
+  6 10  1  0  0  0
+  6  9  1  0  0  0
+  6 20  1  0  0  0
+  7  9  1  0  0  0
+  8 11  1  0  0  0
+  9 12  1  0  0  0
+  9 21  1  0  0  0
+ 10 22  1  0  0  0
+ 11 23  1  0  0  0
+ 12 24  1  0  0  0
+ 12 25  1  0  0  0
+ 12 26  1  0  0  0
+M  CHG  1  12   1
+M  END
+> <s_m_source_file>
+/home/app/web/public/media/compounds/VSM-00000000058/58.sdf
+
+> <i_m_source_file_index>
+1
+
+> <i_lp_mmshare_version>
+57137
+
+> <i_f3d_flags>
+0
+
+> <s_epik_input>
+W0NIM11bQ0BIXShbT0hdKVtDQEhdKFtOSDJdKWMxW2NIXVtjSF1jKFtPSF0pW2NIXVtjSF0x
+
+> <s_epik_cmdline>
+J2VwaWtfcHl0aG9uJywgJy1waCcsICc3LjAnLCAnLXRuJywgJzgnLCAnLW1hJywgJzIwMCcsICctaW1hZScsICc8aW5maWxlLm1hZT4nLCAnLW9tYWUnLCAnPG91dGZpbGUubWFlPic=
+
+> <r_lp_tautomer_probability>
+1
+
+> <r_epik_Ionization_Penalty>
+0.0360141
+
+> <r_epik_Ionization_Penalty_Charging>
+0.0295478
+
+> <r_epik_Ionization_Penalty_Neutral>
+0.00646627
+
+> <r_epik_State_Penalty>
+0.0357007
+
+> <r_epik_Charging_Adjusted_Penalty>
+0.0652485
+
+> <i_epik_Tot_Q>
+1
+
+> <i_epik_Tot_abs_Q>
+1
+
+> <s_lp_Force_Field>
+S-OPLS
+
+> <r_lp_Energy>
+12.2447
+
+> <b_lp_Chiralities_Consistent>
+1
+
+> <s_lp_Variant>
+VSM-00000000058-1
+
+> <s_conf_id>
+5
+
+> <r_mmff_energy>
+27.9276564974573
+
+> <r_bc_rmsd>
+1.84785759920907
+
+$$$$
+VSM-00000000058
+                    3D
+ Schrodinger Suite 2022-1.
+ 26 26  0  0  1  0            999 V2000
+  157.7185  129.0024  193.8398 C   0  0  0  0  0  0
+  160.8869  130.1658  193.8067 C   0  0  0  0  0  0
+  161.5919  128.1914  192.6071 C   0  0  0  0  0  0
+  161.6944  130.9477  192.9778 C   0  0  0  0  0  0
+  162.3993  128.9769  191.7791 C   0  0  0  0  0  0
+  158.4916  127.7083  194.0617 C   0  0  1  0  0  0
+  160.8286  128.7717  193.6384 C   0  0  0  0  0  0
+  162.4443  130.3500  191.9742 C   0  0  0  0  0  0
+  159.9704  127.8851  194.5037 C   0  0  1  0  0  0
+  157.8405  126.9906  195.1319 O   0  0  0  0  0  0
+  163.2131  131.1597  191.1968 O   0  0  0  0  0  0
+  159.9665  128.2642  195.9511 N   0  3  0  0  0  0
+  157.7278  129.6331  194.7349 H   0  0  0  0  0  0
+  158.1178  129.5737  192.9973 H   0  0  0  0  0  0
+  156.6659  128.7823  193.6289 H   0  0  0  0  0  0
+  160.3042  130.6847  194.5630 H   0  0  0  0  0  0
+  161.5728  127.1160  192.4301 H   0  0  0  0  0  0
+  161.7373  132.0274  193.1066 H   0  0  0  0  0  0
+  162.9812  128.5046  190.9919 H   0  0  0  0  0  0
+  158.4481  127.0911  193.1570 H   0  0  0  0  0  0
+  160.4217  126.8843  194.5283 H   0  0  0  0  0  0
+  156.9564  126.7213  194.8042 H   0  0  0  0  0  0
+  163.6768  130.6291  190.5270 H   0  0  0  0  0  0
+  159.6290  129.2158  196.1130 H   0  0  0  0  0  0
+  160.8891  128.1479  196.3810 H   0  0  0  0  0  0
+  159.2913  127.6283  196.4091 H   0  0  0  0  0  0
+  1  6  1  0  0  0
+  1 13  1  0  0  0
+  1 14  1  0  0  0
+  1 15  1  0  0  0
+  2  4  2  0  0  0
+  2  7  1  0  0  0
+  2 16  1  0  0  0
+  3  5  1  0  0  0
+  3  7  2  0  0  0
+  3 17  1  0  0  0
+  4  8  1  0  0  0
+  4 18  1  0  0  0
+  5  8  2  0  0  0
+  5 19  1  0  0  0
+  6 10  1  0  0  0
+  6  9  1  0  0  0
+  6 20  1  0  0  0
+  7  9  1  0  0  0
+  8 11  1  0  0  0
+  9 12  1  0  0  0
+  9 21  1  0  0  0
+ 10 22  1  0  0  0
+ 11 23  1  0  0  0
+ 12 24  1  0  0  0
+ 12 25  1  0  0  0
+ 12 26  1  0  0  0
+M  CHG  1  12   1
+M  END
+> <s_m_source_file>
+/home/app/web/public/media/compounds/VSM-00000000058/58.sdf
+
+> <i_m_source_file_index>
+1
+
+> <i_lp_mmshare_version>
+57137
+
+> <i_f3d_flags>
+0
+
+> <s_epik_input>
+W0NIM11bQ0BIXShbT0hdKVtDQEhdKFtOSDJdKWMxW2NIXVtjSF1jKFtPSF0pW2NIXVtjSF0x
+
+> <s_epik_cmdline>
+J2VwaWtfcHl0aG9uJywgJy1waCcsICc3LjAnLCAnLXRuJywgJzgnLCAnLW1hJywgJzIwMCcsICctaW1hZScsICc8aW5maWxlLm1hZT4nLCAnLW9tYWUnLCAnPG91dGZpbGUubWFlPic=
+
+> <r_lp_tautomer_probability>
+1
+
+> <r_epik_Ionization_Penalty>
+0.0360141
+
+> <r_epik_Ionization_Penalty_Charging>
+0.0295478
+
+> <r_epik_Ionization_Penalty_Neutral>
+0.00646627
+
+> <r_epik_State_Penalty>
+0.0357007
+
+> <r_epik_Charging_Adjusted_Penalty>
+0.0652485
+
+> <i_epik_Tot_Q>
+1
+
+> <i_epik_Tot_abs_Q>
+1
+
+> <s_lp_Force_Field>
+S-OPLS
+
+> <r_lp_Energy>
+12.2447
+
+> <b_lp_Chiralities_Consistent>
+1
+
+> <s_lp_Variant>
+VSM-00000000058-1
+
+> <s_conf_id>
+4
+
+> <r_mmff_energy>
+28.9751465812448
+
+> <r_bc_rmsd>
+1.41459883477064
+
+$$$$
+VSM-00000000058
+                    3D
+ Schrodinger Suite 2022-1.
+ 26 26  0  0  1  0            999 V2000
+  157.7185  129.0024  193.8398 C   0  0  0  0  0  0
+  160.8869  130.1658  193.8067 C   0  0  0  0  0  0
+  161.5918  128.1915  192.6071 C   0  0  0  0  0  0
+  161.6944  130.9476  192.9778 C   0  0  0  0  0  0
+  162.3993  128.9769  191.7791 C   0  0  0  0  0  0
+  158.4916  127.7083  194.0617 C   0  0  1  0  0  0
+  160.8286  128.7716  193.6384 C   0  0  0  0  0  0
+  162.4443  130.3500  191.9741 C   0  0  0  0  0  0
+  159.9703  127.8852  194.5037 C   0  0  1  0  0  0
+  157.8405  126.9906  195.1319 O   0  0  0  0  0  0
+  163.2131  131.1597  191.1969 O   0  0  0  0  0  0
+  159.9665  128.2643  195.9511 N   0  3  0  0  0  0
+  158.1178  129.5738  192.9974 H   0  0  0  0  0  0
+  156.6660  128.7823  193.6289 H   0  0  0  0  0  0
+  157.7278  129.6331  194.7349 H   0  0  0  0  0  0
+  160.3042  130.6847  194.5631 H   0  0  0  0  0  0
+  161.5728  127.1160  192.4301 H   0  0  0  0  0  0
+  161.7373  132.0275  193.1067 H   0  0  0  0  0  0
+  162.9812  128.5045  190.9918 H   0  0  0  0  0  0
+  158.4480  127.0910  193.1570 H   0  0  0  0  0  0
+  160.4218  126.8842  194.5283 H   0  0  0  0  0  0
+  156.9565  126.7213  194.8043 H   0  0  0  0  0  0
+  163.6768  130.6291  190.5270 H   0  0  0  0  0  0
+  159.6290  129.2159  196.1130 H   0  0  0  0  0  0
+  159.2913  127.6283  196.4092 H   0  0  0  0  0  0
+  160.8891  128.1478  196.3810 H   0  0  0  0  0  0
+  1  6  1  0  0  0
+  1 13  1  0  0  0
+  1 14  1  0  0  0
+  1 15  1  0  0  0
+  2  4  2  0  0  0
+  2  7  1  0  0  0
+  2 16  1  0  0  0
+  3  5  1  0  0  0
+  3  7  2  0  0  0
+  3 17  1  0  0  0
+  4  8  1  0  0  0
+  4 18  1  0  0  0
+  5  8  2  0  0  0
+  5 19  1  0  0  0
+  6 10  1  0  0  0
+  6  9  1  0  0  0
+  6 20  1  0  0  0
+  7  9  1  0  0  0
+  8 11  1  0  0  0
+  9 12  1  0  0  0
+  9 21  1  0  0  0
+ 10 22  1  0  0  0
+ 11 23  1  0  0  0
+ 12 24  1  0  0  0
+ 12 25  1  0  0  0
+ 12 26  1  0  0  0
+M  CHG  1  12   1
+M  END
+> <s_m_source_file>
+/home/app/web/public/media/compounds/VSM-00000000058/58.sdf
+
+> <i_m_source_file_index>
+1
+
+> <i_lp_mmshare_version>
+57137
+
+> <i_f3d_flags>
+0
+
+> <s_epik_input>
+W0NIM11bQ0BIXShbT0hdKVtDQEhdKFtOSDJdKWMxW2NIXVtjSF1jKFtPSF0pW2NIXVtjSF0x
+
+> <s_epik_cmdline>
+J2VwaWtfcHl0aG9uJywgJy1waCcsICc3LjAnLCAnLXRuJywgJzgnLCAnLW1hJywgJzIwMCcsICctaW1hZScsICc8aW5maWxlLm1hZT4nLCAnLW9tYWUnLCAnPG91dGZpbGUubWFlPic=
+
+> <r_lp_tautomer_probability>
+1
+
+> <r_epik_Ionization_Penalty>
+0.0360141
+
+> <r_epik_Ionization_Penalty_Charging>
+0.0295478
+
+> <r_epik_Ionization_Penalty_Neutral>
+0.00646627
+
+> <r_epik_State_Penalty>
+0.0357007
+
+> <r_epik_Charging_Adjusted_Penalty>
+0.0652485
+
+> <i_epik_Tot_Q>
+1
+
+> <i_epik_Tot_abs_Q>
+1
+
+> <s_lp_Force_Field>
+S-OPLS
+
+> <r_lp_Energy>
+12.2447
+
+> <b_lp_Chiralities_Consistent>
+1
+
+> <s_lp_Variant>
+VSM-00000000058-1
+
+> <s_conf_id>
+2
+
+> <r_mmff_energy>
+28.9751466049667
+
+> <r_bc_rmsd>
+1.41461088532184
+
+$$$$
+VSM-00000000058
+                    3D
+ Schrodinger Suite 2022-1.
+ 26 26  0  0  1  0            999 V2000
+  157.2691  127.9504  194.9418 C   0  0  0  0  0  0
+  161.7406  128.1763  192.7881 C   0  0  0  0  0  0
+  160.8314  130.3014  193.5000 C   0  0  0  0  0  0
+  162.6957  128.8416  192.0142 C   0  0  0  0  0  0
+  161.7890  130.9619  192.7288 C   0  0  0  0  0  0
+  158.3211  128.3525  193.9125 C   0  0  1  0  0  0
+  160.7983  128.8958  193.5447 C   0  0  0  0  0  0
+  162.7126  130.2297  191.9945 C   0  0  0  0  0  0
+  159.7899  128.1523  194.4008 C   0  0  1  0  0  0
+  158.1213  127.5232  192.7652 O   0  0  0  0  0  0
+  163.6234  130.9242  191.2597 O   0  0  0  0  0  0
+  159.9782  128.5275  195.8323 N   0  3  0  0  0  0
+  157.4157  126.9142  195.2663 H   0  0  0  0  0  0
+  157.2882  128.6035  195.8190 H   0  0  0  0  0  0
+  156.2662  128.0017  194.5036 H   0  0  0  0  0  0
+  161.7381  127.0866  192.7764 H   0  0  0  0  0  0
+  160.1146  130.9117  194.0442 H   0  0  0  0  0  0
+  163.4107  128.2649  191.4332 H   0  0  0  0  0  0
+  161.8138  132.0489  192.6884 H   0  0  0  0  0  0
+  158.1467  129.3911  193.6096 H   0  0  0  0  0  0
+  160.0233  127.0802  194.3681 H   0  0  0  0  0  0
+  157.2689  127.7584  192.3502 H   0  0  0  0  0  0
+  164.1703  130.3049  190.7470 H   0  0  0  0  0  0
+  159.4669  127.9005  196.4636 H   0  0  0  0  0  0
+  160.9766  128.4547  196.0702 H   0  0  0  0  0  0
+  159.6948  129.4954  196.0184 H   0  0  0  0  0  0
+  1  6  1  0  0  0
+  1 13  1  0  0  0
+  1 14  1  0  0  0
+  1 15  1  0  0  0
+  2  4  2  0  0  0
+  2  7  1  0  0  0
+  2 16  1  0  0  0
+  3  5  1  0  0  0
+  3  7  2  0  0  0
+  3 17  1  0  0  0
+  4  8  1  0  0  0
+  4 18  1  0  0  0
+  5  8  2  0  0  0
+  5 19  1  0  0  0
+  6 10  1  0  0  0
+  6  9  1  0  0  0
+  6 20  1  0  0  0
+  7  9  1  0  0  0
+  8 11  1  0  0  0
+  9 12  1  0  0  0
+  9 21  1  0  0  0
+ 10 22  1  0  0  0
+ 11 23  1  0  0  0
+ 12 24  1  0  0  0
+ 12 25  1  0  0  0
+ 12 26  1  0  0  0
+M  CHG  1  12   1
+M  END
+> <s_m_source_file>
+/home/app/web/public/media/compounds/VSM-00000000058/58.sdf
+
+> <i_m_source_file_index>
+1
+
+> <i_lp_mmshare_version>
+57137
+
+> <i_f3d_flags>
+0
+
+> <s_epik_input>
+W0NIM11bQ0BIXShbT0hdKVtDQEhdKFtOSDJdKWMxW2NIXVtjSF1jKFtPSF0pW2NIXVtjSF0x
+
+> <s_epik_cmdline>
+J2VwaWtfcHl0aG9uJywgJy1waCcsICc3LjAnLCAnLXRuJywgJzgnLCAnLW1hJywgJzIwMCcsICctaW1hZScsICc8aW5maWxlLm1hZT4nLCAnLW9tYWUnLCAnPG91dGZpbGUubWFlPic=
+
+> <r_lp_tautomer_probability>
+1
+
+> <r_epik_Ionization_Penalty>
+0.0360141
+
+> <r_epik_Ionization_Penalty_Charging>
+0.0295478
+
+> <r_epik_Ionization_Penalty_Neutral>
+0.00646627
+
+> <r_epik_State_Penalty>
+0.0357007
+
+> <r_epik_Charging_Adjusted_Penalty>
+0.0652485
+
+> <i_epik_Tot_Q>
+1
+
+> <i_epik_Tot_abs_Q>
+1
+
+> <s_lp_Force_Field>
+S-OPLS
+
+> <r_lp_Energy>
+12.2447
+
+> <b_lp_Chiralities_Consistent>
+1
+
+> <s_lp_Variant>
+VSM-00000000058-1
+
+> <s_conf_id>
+1
+
+> <r_mmff_energy>
+41.5021491754281
+
+> <r_bc_rmsd>
+0.873564804059249
+
+$$$$
+VSM-00000000058
+                    3D
+ Schrodinger Suite 2022-1.
+ 26 26  0  0  1  0            999 V2000
+  157.2691  127.9504  194.9419 C   0  0  0  0  0  0
+  161.7404  128.1763  192.7880 C   0  0  0  0  0  0
+  160.8314  130.3014  193.5002 C   0  0  0  0  0  0
+  162.6957  128.8416  192.0142 C   0  0  0  0  0  0
+  161.7890  130.9618  192.7289 C   0  0  0  0  0  0
+  158.3211  128.3525  193.9125 C   0  0  1  0  0  0
+  160.7982  128.8959  193.5447 C   0  0  0  0  0  0
+  162.7126  130.2298  191.9945 C   0  0  0  0  0  0
+  159.7899  128.1523  194.4008 C   0  0  1  0  0  0
+  158.1213  127.5229  192.7652 O   0  0  0  0  0  0
+  163.6234  130.9242  191.2597 O   0  0  0  0  0  0
+  159.9782  128.5276  195.8323 N   0  3  0  0  0  0
+  157.2882  128.6037  195.8189 H   0  0  0  0  0  0
+  157.4156  126.9144  195.2664 H   0  0  0  0  0  0
+  156.2662  128.0017  194.5035 H   0  0  0  0  0  0
+  161.7380  127.0866  192.7762 H   0  0  0  0  0  0
+  160.1147  130.9118  194.0443 H   0  0  0  0  0  0
+  163.4105  128.2650  191.4330 H   0  0  0  0  0  0
+  161.8138  132.0490  192.6886 H   0  0  0  0  0  0
+  158.1468  129.3909  193.6095 H   0  0  0  0  0  0
+  160.0234  127.0802  194.3681 H   0  0  0  0  0  0
+  157.2690  127.7582  192.3502 H   0  0  0  0  0  0
+  164.1703  130.3049  190.7469 H   0  0  0  0  0  0
+  160.9766  128.4547  196.0703 H   0  0  0  0  0  0
+  159.6948  129.4954  196.0184 H   0  0  0  0  0  0
+  159.4669  127.9005  196.4636 H   0  0  0  0  0  0
+  1  6  1  0  0  0
+  1 13  1  0  0  0
+  1 14  1  0  0  0
+  1 15  1  0  0  0
+  2  4  2  0  0  0
+  2  7  1  0  0  0
+  2 16  1  0  0  0
+  3  5  1  0  0  0
+  3  7  2  0  0  0
+  3 17  1  0  0  0
+  4  8  1  0  0  0
+  4 18  1  0  0  0
+  5  8  2  0  0  0
+  5 19  1  0  0  0
+  6 10  1  0  0  0
+  6  9  1  0  0  0
+  6 20  1  0  0  0
+  7  9  1  0  0  0
+  8 11  1  0  0  0
+  9 12  1  0  0  0
+  9 21  1  0  0  0
+ 10 22  1  0  0  0
+ 11 23  1  0  0  0
+ 12 24  1  0  0  0
+ 12 25  1  0  0  0
+ 12 26  1  0  0  0
+M  CHG  1  12   1
+M  END
+> <s_m_source_file>
+/home/app/web/public/media/compounds/VSM-00000000058/58.sdf
+
+> <i_m_source_file_index>
+1
+
+> <i_lp_mmshare_version>
+57137
+
+> <i_f3d_flags>
+0
+
+> <s_epik_input>
+W0NIM11bQ0BIXShbT0hdKVtDQEhdKFtOSDJdKWMxW2NIXVtjSF1jKFtPSF0pW2NIXVtjSF0x
+
+> <s_epik_cmdline>
+J2VwaWtfcHl0aG9uJywgJy1waCcsICc3LjAnLCAnLXRuJywgJzgnLCAnLW1hJywgJzIwMCcsICctaW1hZScsICc8aW5maWxlLm1hZT4nLCAnLW9tYWUnLCAnPG91dGZpbGUubWFlPic=
+
+> <r_lp_tautomer_probability>
+1
+
+> <r_epik_Ionization_Penalty>
+0.0360141
+
+> <r_epik_Ionization_Penalty_Charging>
+0.0295478
+
+> <r_epik_Ionization_Penalty_Neutral>
+0.00646627
+
+> <r_epik_State_Penalty>
+0.0357007
+
+> <r_epik_Charging_Adjusted_Penalty>
+0.0652485
+
+> <i_epik_Tot_Q>
+1
+
+> <i_epik_Tot_abs_Q>
+1
+
+> <s_lp_Force_Field>
+S-OPLS
+
+> <r_lp_Energy>
+12.2447
+
+> <b_lp_Chiralities_Consistent>
+1
+
+> <s_lp_Variant>
+VSM-00000000058-1
+
+> <s_conf_id>
+0
+
+> <r_mmff_energy>
+41.5021494208244
+
+> <r_bc_rmsd>
+0.87349046085674
+
+$$$$

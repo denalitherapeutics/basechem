@@ -1,0 +1,118 @@
+@import './../../../mni_common/static/mni_common/less/constants.less';
+
+.centered-text-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.help-text {
+    display: block;
+    margin-top: 0.25rem;
+    text-align: center;
+}
+
+.analysis-viewer-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.analysis-viewer {
+    height: 100%;
+    width: 100%;
+    min-height: 400px;
+    min-width: 400px;
+    position: relative;
+    margin: 0px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.go-btn{
+    float: right;
+    margin: auto 0px 15px auto;
+    width: 100px;
+    justify-content: center;
+}
+
+.btn.btn-above-viewer {
+  margin-right: 5px;
+  height: fit-content;
+}
+
+button#fit-viewer{
+  width:40px;
+  justify-content:center;
+}
+
+.btn.btn-collapse{
+  width:100%;
+  text-align:left;
+}
+
+button[disabled=disabled], button:disabled {
+    opacity: 50%;
+}
+
+.analysis-help{
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+#grid-view-helptext {
+    height: 24px;
+    width: 24px;
+}
+
+.hflex{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.left-btn{
+    margin-right: 5px;
+}
+
+.right{
+    margin-right: 0px;
+    float: right;
+}
+
+.analysis-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    form {
+        background-color: @paleBlue; 
+        padding: 10px;
+        border-radius: 10px;
+    }
+}
+
+#form-container{
+    flex: 1;
+    margin-right: 30px;
+    .analysis-form {
+        width: 100%;
+        margin-bottom: 10px;
+
+    }
+}
+
+#viewer-container{
+    flex: 1.5;
+}
+
+#mmp-table{
+    white-space: nowrap;
+    td:first-child {
+        border-right: 4px solid @veryDarkBlue;
+    }
+}

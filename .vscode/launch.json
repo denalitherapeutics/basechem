@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Django server",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "localhost",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/basechem",
+                    "remoteRoot": "/home/app/web/basechem"
+                }
+            ]
+        },
+        {
+            "name": "Django shell",
+            "type": "python",
+            "request": "attach",
+            "port": 5679,
+            "host": "localhost",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/basechem",
+                    "remoteRoot": "/home/app/web/basechem"
+                }
+            ]
+        },
+    ],
+}

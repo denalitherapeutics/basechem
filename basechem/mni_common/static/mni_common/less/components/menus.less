@@ -1,0 +1,50 @@
+/******************
+ * Dropdown menus *
+ ******************/
+
+@import "buttons.less";
+@import "../constants.less";
+
+.dropdown-toggle.three-dots-dropdown {
+  /* Hide Bootstrap's default arrow on the element since 
+  the three dots icon is used instead. */
+  &::after {
+    display: none;
+  }
+}
+
+
+.dropdown-item {
+  display: flex;
+
+  .label {
+    padding-left: 4px;
+  }
+  .icon {
+    background-color: @lightBlue;
+  }
+
+  &:hover {
+    background-color: @lightBlue;
+    color: @white;
+
+    .icon {
+      background-color: @white;
+    }
+  }
+}
+
+.dropdown-menu.show {
+  border-radius: 8px;
+  padding: 0;
+
+  .dropdown-item:first-of-type {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .dropdown-item:last-of-type {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}

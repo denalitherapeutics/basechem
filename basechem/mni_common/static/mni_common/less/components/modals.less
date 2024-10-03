@@ -1,0 +1,38 @@
+@import "buttons.less";
+@import "../constants.less";
+
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.5;
+  color: @darkGrey;
+}
+
+.modal-subtitle {
+  padding: 0 1rem;
+  font-size: 1.125rem;
+  line-height: 1.78;
+  color: @lightGrey;
+}
+
+.modal-footer {
+  justify-content: flex-end;
+  .row {
+    width: 100%;
+  }
+  .btn-cancel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .next-step-btn {
+    .btn-denali-primary-mixin();
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+  }
+}

@@ -1,0 +1,20 @@
+{% load static mni_common_tags %}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Roboto:b&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/bundle.css' %}?rev={{ REVISION }}">
+  </head>
+  <body>
+    {% if ping %}
+      <h2>{{ subject|safe }}</h2>
+      <p>{{ message|safe }}</p>
+    {% elif data %}
+      <h2><a href="{% get_setting 'BASE_URL' %}{% url "dtx-mmp" collection_pk %}">Click here</a> to view MMPs for the assayed compounds.</h2>
+      <p>
+        Check out the attached report of the latest data for {{ project.code }}. This report contains data that has not been through QC yet - please check Dotmatics or with the project team later for validated data.
+      </p>
+    {% endif %}
+    <p>Thanks for using Basechem - reach out to MnI with any questions.</p>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+@import 'constants.less';
+
+/*
+A mixin to define a grid layout by specifying desired column sizes
+and the gap between them. For example, .grid-columns(1fr 1fr, 10px)
+will create a grid layout with two columns of equal width and a 10px
+spacing between them.
+*/
+.grid-columns(@columns, @column-gap: 0px) {
+    display: grid;
+    grid-template-columns: @columns;
+    grid-gap: @column-gap;
+    align-items: center;
+}
+
+.header-mixin() {
+    display: grid;
+    grid-gap: 8px;
+    align-items: center;
+    padding: 0 96px;
+    background-color: @veryDarkBlue;
+    height: 4.5rem;
+    width: 100%;
+    text-align: center;
+
+    .logo {
+        justify-self: left;
+
+        img {
+            height: 24px;
+            width: 157px;
+            object-fit: contain;
+        }
+
+        text-align: left;
+    }
+
+    .header-dropdown-btn {
+        color: @white;
+        background-color: @veryDarkBlue;
+        border: none;
+    }
+
+    #user-icon {
+        height: 16px;
+        padding: 0 3.2px;
+    }
+
+    .dropdown {
+        justify-self: right;
+        display: block;
+    }
+
+    .search-control {
+        .input-group {
+            .grid-columns(0.01fr 1fr, 0);
+
+            form {
+                width: 100%;
+            }
+        }
+
+        .input-group>* {
+            height: 3.5rem;
+        }
+
+        .btn.btn-search {
+            color: @orange;
+            border-right: none;
+            background-color: @white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .icon.search {
+                background-color: @orange;
+                -webkit-mask-image: url(@searchIcon);
+                mask-image: url(@searchIcon);
+            }
+
+            &:hover {
+                background-color: @hoverColor;
+
+                .icon.search {
+                    background-color: @white;
+                }
+            }
+        }
+    }
+
+}

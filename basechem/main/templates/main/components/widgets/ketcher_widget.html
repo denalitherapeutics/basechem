@@ -1,0 +1,48 @@
+{% load static %}
+<p class="text-red" id="{{ widget.attrs.id }}_loading">Loading sketcher....</p>
+<iframe id="{{ widget.attrs.id }}_frame" src="{% url 'ketcher' %}" width="100%" height="500px" style="display: none"></iframe>
+<textarea name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %} style="display:none">{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+<script>
+  waitForKetcherToLoad("{{ widget.attrs.id }}")
+  /**
+  * We can't interact with the ketcher until the iframe has loaded, this function
+  * will keep calling itself until the iframe has loaded.
+  * @param {String} textareaId the ID of the textarea for this widget
+  **/
+  function waitForKetcherToLoad(textareaId) {
+    // Get a handle to the iframe element
+    const iframeId = `${textareaId}_frame`
+    const ketcherFrame = document.getElementById(iframeId);
+    if(ketcherFrame.contentWindow.ketcher) {
+      afterKetcherLoaded(textareaId);
+    }else{
+      // iFrame not loaded, check status again after 50 milliseconds
+      window.setTimeout(function(){waitForKetcherToLoad(textareaId)}, 50);
+    }
+  }
+  /**
+  * Events that we want to run after the ketcher Iframe has loaded.
+  * @param {String} textareaId the ID of the textarea for this widget
+  **/
+  function afterKetcherLoaded(textareaId){
+    const loadingMsg = document.getElementById(`${textareaId}_loading`);
+    const ketcherFrame = document.getElementById(`${textareaId}_frame`);
+    const ketcher = ketcherFrame.contentWindow.ketcher;
+    const textarea = document.getElementById(textareaId)
+    // Hide the loading message and show the iframe
+    loadingMsg.style.display = "none"
+    ketcherFrame.style.display = "";
+    // If there is an initial value, add it to the the viewer
+    if(textarea.value){
+      const moltext = "\n" + textarea.innerText
+      ketcher.setMolecule(moltext)
+    }
+    // Update the value of the textarea everytime the value of the ketcher editor changes.
+    // The textarea is what's read by django to determine the value of this field
+    ketcher.editor.subscribe("change", function(){
+      ketcher.getMolfile().then(moltext => {
+        textarea.value = moltext
+      })
+    });
+  };
+</script>

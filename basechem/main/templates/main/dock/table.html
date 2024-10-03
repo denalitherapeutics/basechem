@@ -1,0 +1,34 @@
+{% load static crispy_forms_tags mni_common_tags tags %}
+<form id="new-analysis-form" class="analysis-form ajax-form" form-errors="new-analysis-errors" action="{% url 'dock' collection.id %}" method="post" enctype="multipart/form-data" novalidate>
+  <div class="errors" id="new-analysis-errors"></div>
+  {% csrf_token %}
+  <div style="display:flex; flex-direction:row">
+    <div style="width:80%;">
+      {{ form.reference|as_crispy_field }}
+    </div>
+    <button id="dock-btn" class="btn btn-denali-primary go-btn" type="submit" value="Submit">Dock!</button>
+  </div>
+  <small id="dock-help" class="help-text text-muted analysis-help">Choose the reference to use as the basis for docking</small>
+</form>
+<div id="compounds-table-container">
+  <table id="dock-table" class="table table-striped table-bordered full-width">
+    <thead>
+      <tr>
+        <th class="order-column">Order</th>
+        <th style="width:200px">Structure</th>
+        <th>Compound</th>
+        <th>Series</th>
+        <th style="min-width:130px">
+          Poses
+          <span class="hover-tooltip icon question-mark bg-orange" data-toggle="tooltip" data-placement="right" title='Labels are "Toklat Score; RMSD to aligned"'></span>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for co in compound_occurrences %}
+        {% include "main/dock/table_row.html" with row_num=forloop.counter %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

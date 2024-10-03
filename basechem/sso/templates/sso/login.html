@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <div class="login-page">
+    <div class="login-page-content">
+      <h2>Welcome to Basechem</h2>
+      {% if errors %}
+        <div class="error">
+          {{ errors }}
+        </div>
+      {% endif %}
+      <div class="login-container" id="basic-login">
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <table>
+            <tr>
+              <td>{{ form.username.label_tag }}</td>
+              <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+              <td>{{ form.password.label_tag }}</td>
+              <td>{{ form.password }}</td>
+            </tr>
+          </table>
+
+          <input class="btn btn-sso-login" type="submit" value="Log in with password">
+          <input type="hidden" name="next" value="{{ next }}">
+        </form>
+      </div>
+      {% if sso_available %}
+        <div class="login-container">
+          <a class="btn btn-sso-login" href="{% url 'sso_login' %}">Log in with SSO</a>
+        </div>
+      {% endif %}
+      <h6 class="login-help-text">For help with your account, contact your Modeling and Informatics team.</h6>
+    </div>
+  </div>
+{% endblock %}

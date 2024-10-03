@@ -1,0 +1,11 @@
+tbody tr:nth-of-type(odd) {
+    background-color: #fff;
+}
+tbody tr:nth-of-type(even) {
+    background-color: #ebf7fa;
+  }
+
+@page {
+    size: Ledger;
+    margin: 0in 0.44in 0.2in 0.44in;
+}

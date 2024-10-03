@@ -1,0 +1,40 @@
+version: "3"
+services:
+  web:
+    image: basechem_dev:latest
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: ./deployment/Dockerfile
+      args:
+        ENV_NAME: "dev"
+    command: ["sh", "-c", "/usr/bin/supervisord & python manage.py runserver 0.0.0.0:8000"]  
+    # If you want to use the debugger -> broken tho :'(
+    # command: ["sh", "-c", "/usr/bin/supervisord && python -m debugpy --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:8000"]
+    volumes:
+      - ./basechem:/home/app/web/basechem
+      - ./public:/home/app/web/public
+      - ./log:/home/app/web/log
+      - ./basechem/common/mmpdb_data:/opt/mmpdb-3.1/mmpdb_data
+    ports:
+      - 8000:8000
+      - 5678:5678 # used for debugging the server
+      - 5679:5679 # used for debugging Django shell by running `django_debug_shell`
+    env_file:
+      - ./deployment/.env.dev
+    depends_on:
+      - db
+  db:
+    image: mcs07/postgres-rdkit:latest
+    platform: linux/amd64
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./deployment/docker-postgresql-multiple-databases.sh:/docker-entrypoint-initdb.d/docker-postgresql-multiple-databases.sh
+
+    environment:
+      - POSTGRES_USER=basechem
+      - POSTGRES_PASSWORD=basechem
+      - POSTGRES_MULTIPLE_DATABASES=mmpdb_bc_test
+
+volumes:
+  postgres_data:

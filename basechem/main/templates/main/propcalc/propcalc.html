@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}PropCalc{% endblock %}
+{% load static %}
+{% block content %}
+  <div class="btn-row" style="float:right">
+    <button type="button" class="btn btn-icon add-comp-btn hover-tooltip" data-moltext="" title="Add compound(s)"><span class="icon icon-48 plant bg-navy" style="margin-top:5px;"></span></button>
+    <button type="button" data-toggle="modal" data-target="#hike-modal" class="btn btn-icon hover-tooltip" title="Change analysis"><span class="icon hiking bg-navy"></span></button>
+  </div>
+  <h1>Collection {{ collection }}</h1>
+  <h3>
+    Calculated Properties
+    <span id="grid-view-helptext" class="hover-tooltip icon question-mark bg-orange" style="display:none" data-toggle="tooltip" data-placement="auto" data-html=true title="<img src={% static 'images/propcalc/grid_view_key.png' %} width=300px></img>"></span>
+  </h3>
+  {{ collection.pk|json_script:"collection-pk" }}
+  {{ group_name|json_script:"group-name" }}
+  {{ property_results|json_script:"property-results"}}
+  <div class ="button-row-container">
+    <div class="left-buttons">
+      {% if props|length > 1 %}
+        <button style="margin-right:10px;" id="download-propcalc-results" type="button" class="btn btn-denali-secondary" onclick="window.location='{% url 'downloadresultfile' current_view collection.id group_name %}' ">
+          Download Results as an SDF file
+        </button>
+      {% endif %}
+    </div>
+    <div class="right-buttons">
+      <a id="show-grid-btn" class="btn btn-denali-primary hover-tooltip" data-toggle="tooltip" data-placement="auto" title="View as grid">
+        <span class="icon grid"></span>
+      </a>
+      <a id="show-table-btn" class="btn btn-denali-primary hover-tooltip" style="display:none" data-toggle="tooltip" data-placement="auto" title="View as table">
+        <span class="icon table-icon my-auto"></span>
+      </a>
+    </div>
+  </div>
+  {% include "main/propcalc/grid.html" %}
+  {% include "main/propcalc/table.html" %}
+  {% include "mni_common/loading.html" %}
+  {% include "main/components/modals/hike.html" %}
+  {% include "main/components/modals/add_comps.html" with form=add_comp_form %}
+{% endblock content %}
+{% block extra-js %}
+  <script>
+    $('#propcalc-table').DataTable({
+      rowReorder: true,
+      paging: false,
+      searching: false,
+      columnDefs: [
+        // Don't allow ordering on the structure and action columns
+        {targets: [1, -1], orderable: false}
+      ]
+    });
+    enableRowReorder('propcalc-table')
+    showLoadingModal({ title: '{{ loading_title }}', message: '{{ loading_message }}'})
+    PropCalc()
+  </script>
+{% endblock extra-js %}

@@ -1,0 +1,4 @@
+{% load tags %}
+{% for pose_id, pose_data in poses.items %}
+  <option value="{{ pose_id }}" data-id="{{ pose_id }}">{{ pose_data.toklatScore }}; {{ pose_data.RMSDtoLSAligned }} {% if pose_id in saved_gem_ids %}*{% endif %}</option>
+{% endfor %}

@@ -1,0 +1,123 @@
+test_onecomp_3d.sdf
+                    3D
+ Schrodinger Suite 2022-1.
+ 18 18  0  0  1  0            999 V2000
+    0.1063    1.8808   -0.6963 C   0  0  0  0  0  0
+    1.3229    1.5857    0.2038 C   0  0  0  0  0  0
+    2.4361    2.6390    0.0332 C   0  0  0  0  0  0
+    1.9077    4.0743    0.2291 C   0  0  0  0  0  0
+    0.6910    4.3693   -0.6710 C   0  0  0  0  0  0
+   -0.4222    3.3161   -0.5004 C   0  0  0  0  0  0
+    0.3863    1.7380   -1.7412 H   0  0  0  0  0  0
+   -0.6884    1.1617   -0.4941 H   0  0  0  0  0  0
+    1.0039    1.5624    1.2469 H   0  0  0  0  0  0
+    1.7151    0.5921   -0.0159 H   0  0  0  0  0  0
+    3.2451    2.4417    0.7376 H   0  0  0  0  0  0
+    2.8717    2.5468   -0.9630 H   0  0  0  0  0  0
+    1.6277    4.2171    1.2740 H   0  0  0  0  0  0
+    2.7024    4.7934    0.0269 H   0  0  0  0  0  0
+    0.2989    5.3631   -0.4513 H   0  0  0  0  0  0
+    1.0101    4.3927   -1.7141 H   0  0  0  0  0  0
+   -1.2311    3.5134   -1.2048 H   0  0  0  0  0  0
+   -0.8577    3.4083    0.4957 H   0  0  0  0  0  0
+  1  2  1  0  0  0
+  1  6  1  0  0  0
+  1  7  1  0  0  0
+  1  8  1  0  0  0
+  2  3  1  0  0  0
+  2  9  1  0  0  0
+  2 10  1  0  0  0
+  3  4  1  0  0  0
+  3 11  1  0  0  0
+  3 12  1  0  0  0
+  4  5  1  0  0  0
+  4 13  1  0  0  0
+  4 14  1  0  0  0
+  5  6  1  0  0  0
+  5 15  1  0  0  0
+  5 16  1  0  0  0
+  6 17  1  0  0  0
+  6 18  1  0  0  0
+M  END
+> <s_m_entry_id>
+1152
+
+> <s_m_entry_name>
+test_onecomp.1
+
+> <s_m_Source_Path>
+/Users/auch/Downloads
+
+> <s_m_Source_File>
+test_onecomp.sdf
+
+> <i_m_Source_File_Index>
+1
+
+> <s_m_source_file>
+ligprep_1.maegz
+
+> <i_m_source_file_index>
+1
+
+> <i_lp_mmshare_version>
+57137
+
+> <i_f3d_flags>
+0
+
+> <s_epik_input>
+W0NIMl0xW0NIMl1bQ0gyXVtDSDJdW0NIMl1bQ0gyXTE=
+
+> <s_epik_cmdline>
+J2VwaWtfcHl0aG9uJywgJy1waCcsICc3LjAnLCAnLXRuJywgJzgnLCAnLW1hJywgJzUwMCcsICctaW1hZScsICc8aW5maWxlLm1hZT4nLCAnLW9tYWUnLCAnPG91dGZpbGUubWFlPic=
+
+> <r_lp_tautomer_probability>
+1
+
+> <r_epik_Ionization_Penalty>
+  0.0000
+
+> <r_epik_Ionization_Penalty_Charging>
+  0.0000
+
+> <r_epik_Ionization_Penalty_Neutral>
+  0.0000
+
+> <r_epik_State_Penalty>
+  0.0000
+
+> <r_epik_Charging_Adjusted_Penalty>
+0
+
+> <i_epik_Tot_Q>
+0
+
+> <i_epik_Tot_abs_Q>
+0
+
+> <s_lp_Force_Field>
+S-OPLS
+
+> <r_lp_Energy>
+5.717595
+
+> <b_lp_Chiralities_Consistent>
+1
+
+> <s_lp_Variant>
+test_onecomp.sdf-1
+
+> <s_m_job_name>
+ligprep_1
+
+> <s_m_subgroup_title>
+ligprep_1-out1
+
+> <s_m_subgroupid>
+ligprep_1-out1
+
+> <b_m_subgroup_collapsed>
+0
+
+$$$$

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static tags mni_common_tags %}
+{% block title %}MMPs{% endblock %}
+{% block content %}
+  {{ collection.pk|json_script:"collection-pk" }}
+  {{ group_name|json_script:"group-name" }}
+  <h1>MMPs for {{ co.compound.name }}</h1>
+  <a class="btn btn-denali-secondary" style="margin-bottom:5px; width:240px" href="{% url "submit" "mmp" %}">
+    <span class="icon arrow-left"></span>
+    <span>Start another MMP search</span>
+  </a>
+  {% call_object_method co "get_mmp_task_name" as task_name %}
+  <span class="task-status" id="co-{{ co.id }}" data-task-name="{{ task_name }}">Job running</span>
+  <div style="float:right;" >
+    {{ co.compound|as_svg:"200,100"}}
+  </div>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="dn-tab" data-toggle="tab" href="#dns" role="tab" aria-controls="dns" aria-selected="false">DNs</a>
+      <a class="nav-item nav-link" id="idea-tab" data-toggle="tab" href="#ideas" role="tab" aria-controls="ideas" aria-selected="true">Ideas</a>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="dns" role="tabpanel" aria-labelledby="dn-tab">
+      <p style="margin-top:10px">MMPs that have been registered in Dotmatics:</p>
+    </div>
+    <div class="tab-pane fade" id="ideas" role="tabpanel" aria-labelledby="idea-tab">
+      <p style="margin-top:10px">MMPs that have been uploaded to Basechem, but are not registered in Dotmatics:</p>
+    </div>
+  </div>
+  {% include "mni_common/loading.html" %}
+{% endblock content %}
+{% block extra-js %}
+  <script>
+    showLoadingModal({ title: '{{ loading_title }}', message: '{{ loading_message }}'})
+    Mmp()
+  </script>
+{% endblock extra-js %}

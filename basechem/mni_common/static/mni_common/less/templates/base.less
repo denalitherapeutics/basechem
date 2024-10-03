@@ -1,0 +1,49 @@
+/*
+  Styling base.html
+*/
+
+:root {
+    font-size: 16px;
+}
+
+.header,
+.base {
+    font-family: 'Roboto', sans-serif;
+}
+
+.base {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-block-wrapper {
+    padding: 2em 4em 4em 4em;
+}
+
+.error {
+    color: @red;
+}
+
+a {
+    color: @lightBlue;
+
+    &:hover {
+        color: @hoverColor;
+        text-decoration: none;
+    }
+}
+
+.content-block-wrapper {
+    /* Space the main content 96px from the edges. */
+    padding: 36px 96px 96px 96px;
+
+}
+
+.tooltip-inner {
+    max-width: 350px;
+}
+
+.tooltip {
+    opacity: 1 !important;
+    pointer-events: none;
+}

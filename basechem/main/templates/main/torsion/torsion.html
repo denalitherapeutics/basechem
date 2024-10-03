@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Torsion{% endblock %}
+{% load static mni_common_tags %}
+{% block content %}
+  <div class="btn-row" style="float:right">
+    {% if group_name %}
+      <button type="button" class="btn btn-icon add-comp-btn hover-tooltip" data-moltext="" title="Add compound(s)"><span class="icon icon-48 plant bg-navy" style="margin-top:5px;"></span></button>
+    {% endif %}
+    <button type="button" class="btn btn-icon hover-tooltip" data-toggle="modal" data-target="#hike-modal" title="Change analysis"><span class="icon hiking bg-navy"></span></button>
+  </div>
+  <h1>Collection {{ collection }}</h1>
+  <h3>Scan Torsion Dihedrals</h3>
+  {{ collection.pk|json_script:"collection-pk" }}
+  {{ group_name|json_script:"group-name" }}
+  {{ show_help_modal|json_script:"show-help-modal" }}
+  <div id="torsion-container" class="analysis-container">
+    <div id="form-container">
+      {% include "main/torsion/table.html" %}
+    </div>
+    <div id="viewer-container">
+      {% include "main/torsion/viewer.html" %}
+    </div>
+  </div>
+  {% include "mni_common/loading.html" %}
+  {% include "main/components/modals/hike.html" %}
+  {% include "main/torsion/results_help.html" %}
+  {% include "main/components/modals/add_comps.html" with form=add_comp_form %}
+  <div id="save-gems-modals"></div>
+{% endblock content %}
+{% block extra-js %}
+  {################## DATATABLE MANAGEMENT ##################}
+  <script>
+    const groupName = JSON.parse(document.getElementById('group-name').textContent);
+    const columnDefs = [
+      // Don't allow ordering on the structure column
+      {targets: [1], orderable: false}
+    ]
+    if(groupName){
+      // Don't allow ordering on the structure, toggle, or action columns
+      columnDefs[0].targets = [1, 5, 6]
+    }
+    // Style the table with compounds
+    var dataTable = $('#torsion-table').DataTable({
+      lengthChange: false,
+      rowReorder: true,
+      nowrap: true,
+      searching: false,
+      scrollY: "500px",
+      scrollCollapse: true,
+      paging: false,
+      info: false,
+      order: [0, 'asc'],
+      columnDefs: columnDefs,
+    });
+    enableRowReorder('torsion-table')
+    $('#choose-pioneer').select2({
+      placeholder: "Select or type",
+      width: "100%",
+      templateResult: copyDataId,
+      templateSelection: copyDataId
+    })
+    // Fix datatables issue w/ resizing the header when the user resizes the window
+    window.addEventListener('resize', function(){
+      $('#torsion-table').dataTable().fnAdjustColumnSizing();
+    });
+    Torsion()
+  </script>
+  {% if group_name %}
+    <script>
+      showLoadingModal({ title: '{{ loading_title }}', message: '{{ loading_message }}'})
+    </script>
+  {% endif %}
+{% endblock extra-js %}

@@ -1,0 +1,40 @@
+.login-page {
+    display: flex;
+    height: 60vh;
+    justify-content: center;
+    align-items: center;
+
+    .login-page-content {
+        .login-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 10px 0 10px 0;
+        }
+
+        #basic-login {
+            border: solid 2px @lightGrey;
+            border-radius: 10px;
+        }
+
+        text-align: center;
+
+        h2,
+        h4 {
+            padding: 1rem;
+        }
+
+        .login-help-text {
+            color: @lightGrey;
+        }
+
+        .btn-sso-login {
+            .btn-denali-primary-mixin();
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 1.2rem;
+            width: 16rem;
+            padding: .375rem .75rem;
+        }
+    }
+}
