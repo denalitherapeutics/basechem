@@ -1,0 +1,27 @@
+{% load static %}
+<!--
+  This file is a copy of common/ketcher/ketcher/index.html with adjusted href
+  and src attributes to use the static files from the Django app.
+-->
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Ketcher is a web-based chemical structure editor" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'ketcher/favicon.ico' %}./favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'ketcher/favicon-32x32.png' %}"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'ketcher/favicon-16x16.png' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'ketcher/apple-touch-icon.png' %}" />
+    <link rel="manifest" href="{% static 'manifest.json' %}" />
+    <title>Ketcher v2.9.0</title>
+    <script defer="defer" src="{% static 'ketcher/static/js/main.7a2656ca.js' %}"></script>
+    <link href="{% static 'ketcher/static/css/main.e6d7fe3a.css'%}" rel="stylesheet">
+  </head>
+
+  <body><noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+
+</html>

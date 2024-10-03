@@ -1,0 +1,18 @@
+{% load static %}
+<div class="header">
+  <div class="logo">
+    <a href="{% url 'homepage' %}"><img src="{% static 'mni_common/images/company-logo.png' %}" alt="company-logo.png"/></a>
+  </div>{# logo #}
+
+  {% if user.is_authenticated %}
+    <div class="dropdown">
+      <button type="button" class="btn btn-logout dropdown-toggle header-dropdown-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img id="user-icon" src="{% static 'mni_common/images/user-white.png' %}" alt="user icon" /></img>{{ user.email }}
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'faq' %}?next=/">FAQ</a>
+        <a class="dropdown-item" href="{% url 'logout' %}?next=/">Sign Out</a>
+      </div>
+    </div>{# dropdown #}
+  {% endif %}{# is_authenticated #}
+</div>{# header #}

@@ -1,0 +1,9 @@
+[submodule "basechem/common/gypsum_dl"]
+	path = basechem/common/gypsum_dl
+	url = https://github.com/durrantlab/gypsum_dl.git
+[submodule "basechem/common/apbs"]
+	path = basechem/common/apbs
+	url = https://github.com/Electrostatics/apbs.git
+[submodule "basechem/common/ESP_DNN"]
+	path = basechem/common/ESP_DNN
+	url = https://github.com/AstexUK/ESP_DNN.git

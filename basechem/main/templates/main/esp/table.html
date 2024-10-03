@@ -1,0 +1,45 @@
+{% load static crispy_forms_tags mni_common_tags %}
+{% load tags %}
+{# Reference dropdown + submit button #}
+<form id="new-analysis-form" class="analysis-form ajax-form" form-errors="new-analysis-errors" action="{% url 'esp' collection.id %}" method="post" enctype="multipart/form-data" novalidate>
+  <div class="errors" id="new-analysis-errors"></div>
+  {% csrf_token %}
+  <div style="display:flex; flex-direction:row">
+    <div style="width:80%;">
+      {{ form.reference|as_crispy_field }}
+    </div>
+    <button id="esp-btn" class="btn btn-denali-primary go-btn" type="submit" value="Submit">Generate!</button>
+  </div>
+  <small id="esp-help" class="help-text text-muted analysis-help">Choose the ligand that the selected compounds will be aligned to prior to map generation</small>
+</form>
+<div id="compounds-table-container">
+  <table id="esp-table" class="table table-striped table-bordered full-width">
+    <thead>
+      <tr>
+        <th class="order-column">Order</th>
+        <th style="width:100px">Structure</th>
+        <th>Compound</th>
+        <th>Conformer</th>
+        <th>Series</th>
+        <th>
+          <div class="d-flex align-items-center">
+            <span class="mr-1">Toggle</span>
+            <span class="hover-tooltip icon question-mark bg-orange" data-toggle="tooltip" data-placement="right" title="Use these buttons to toggle the ESP maps"></span>
+          </div>
+        </th>
+        <th>
+          <div class="d-flex align-items-center">
+            <span class="mr-1">Opacity</span>
+            <span class="hover-tooltip icon question-mark bg-orange" data-toggle="tooltip" data-placement="right" title="Ranges from 0 (translucent) to 1 (fully opaque)"></span>
+          </div>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for co in compound_occurrences %}
+        {% include "main/esp/table_row.html" with row_num=forloop.counter %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

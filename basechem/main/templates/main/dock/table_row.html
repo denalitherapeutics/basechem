@@ -1,0 +1,24 @@
+{% load tags mni_common_tags %}
+<tr class="compound-row" id="co-{{ co.id }}" series="s-{{ co.compound.series.id }}" data-new-row="{{ new_row }}">
+  <td class="order-column reorder">{{ row_num }}</td>
+  <td>{{ co.compound|as_svg:"200,50" }}</td>
+  <td>{{ co.compound.name }}</td>
+  <td>{{ co.compound.series.name }}</td>
+  <td style="width:130px">
+    {% if group_name %}
+      <span class="task-status" id="co-{{ co.id }}">Job running</span>
+      {% call_object_method co "get_dock_task_name" ref_string as task_name %}
+      <div class="select-pose-wrapper" id="co-{{ co.id }}" style="display:none;">
+        <select class="select-pose" id="co-{{ co.id }}" data-task-name="{{ task_name }}" multiple></select>
+      </div>
+    {% else %}
+      Start analysis
+    {% endif %}
+  </td>
+  <td class="d-flex justify-content-end">
+    <div class="btn-row flex-nowrap">
+      {% include "main/components/tables/save_gems_btn.html" %}
+      {% include "main/components/tables/add_comps_btn.html" %}
+    </div>
+  </td>
+</tr>

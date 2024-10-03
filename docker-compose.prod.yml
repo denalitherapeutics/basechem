@@ -1,0 +1,32 @@
+version: "3"
+services:
+  web:
+    image: basechem_prod:latest
+    build:
+      context: .
+      dockerfile: ./deployment/Dockerfile
+      args:
+        ENV_NAME: "prod"
+    command: /usr/bin/supervisord
+    volumes:
+      - static_volume:/home/app/web/public/static
+      - media_volume:/home/app/web/public/media
+    expose:
+      - 8000
+    env_file:
+      - ./deployment/.env.prod
+  nginx:
+    image: mninginx_dev:latest
+    build:
+      context: ./deployment/nginx
+    volumes:
+      - static_volume:/home/app/web/public/static
+      - media_volume:/home/app/web/public/media
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+
+volumes:
+  static_volume:
+  media_volume:

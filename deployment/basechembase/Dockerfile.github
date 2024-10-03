@@ -1,0 +1,94 @@
+#############################
+# CentOS-based Docker build #
+#############################
+
+## The Base OS and APBS build are taken from the APBS Centos Dockerfile
+
+###################
+# Install Base OS #
+###################
+
+FROM centos:7 AS apbs_base_centos
+
+RUN yum -y install \
+        epel-release \
+        centos-release-scl && \
+    yum-config-manager --enable rhel-server-rhscl-7-rpms && \
+    yum -y install devtoolset-11 && \
+    source scl_source enable devtoolset-11 && \
+    yum -y install \
+        unzip \
+        cmake3 \
+        git \
+        arpack-devel \
+        arpack-static \
+        f2c \
+        eigen3-devel \
+        boost-devel \
+        python3-pip \
+        python3-devel \
+        openblas-serial64 \
+        openblas-static \
+        openblas-devel \
+        lapack64-devel \
+        lapack64-static \
+        suitesparse-devel \
+        suitesparse-static \
+        && \
+    ln -s /usr/bin/cmake3 /usr/local/bin/cmake
+
+######################################
+# Set up base linux env for Basechem #
+######################################
+    
+ARG GITHUB_TOKEN
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN yum install wget -y 
+
+RUN mkdir -p ~/miniconda3 && \ 
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh --no-check-certificate -O ~/miniconda3/miniconda.sh && \ 
+    bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3 && \ 
+    rm -rf ~/miniconda3/miniconda.sh && \ 
+    ~/miniconda3/bin/conda init bash
+
+RUN source ~/.bashrc && conda config --add channels conda-forge --add channels bioconda
+RUN source ~/.bashrc && conda config --remove channels defaults
+
+RUN ln -sf /usr/share/zoneinfo/US/Pacific /etc/localtime
+
+RUN yum update -y && yum install -y \
+    unzip \
+    vim-enhanced \
+    python-devel \
+    epel-release \
+    bzip2
+
+# Install git >= 2.18 for use in GitHub workflows
+RUN yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm \
+    && yum install -y git
+
+RUN yum install -y \
+    libXcomposite libXcursor libXi libXtst libXrandr alsa-lib mesa-libEGL libXdamage mesa-libGL libXScrnSaver libuv \
+    libxml2-devel xmlsec1-devel xmlsec1-openssl-devel libtool-ltdl-devel xmlsec1 gcc \
+    python-psycopg2 nc \
+    supervisor sudo
+
+# Set up a conda environment. Use conda-libmamba-solver as the dependency solver to speed up installation of dependencies.
+RUN source ~/.bashrc && conda update -n base conda -y \
+    && conda install -n base conda-libmamba-solver \
+    && conda config --set solver libmamba \
+    && conda init bash
+
+# lxml is pinned to 4.9.3 because 5.0.0 is incompatable with python3-saml (at least through v1.16.0), which is the package we use for Okta SAML integration.
+# This issue is described here: https://github.com/SAML-Toolkits/python3-saml/issues/389
+RUN source ~/.bashrc && conda create --name cenv python=3.10 scikit-bio=0.5.9 rdkit=2022.09.4 lxml==4.9.3 nodejs
+
+RUN echo "conda activate cenv" >> ~/.bashrc
+ENV VIRTUAL_ENV /usr/local/envs/cenv
+ENV PATH /usr/local/envs/cenv/bin:$PATH
+
+# Make user home
+RUN useradd -U -m -s /bin/bash -G wheel mniadmin

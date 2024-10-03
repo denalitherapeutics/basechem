@@ -1,0 +1,63 @@
+{% load static crispy_forms_tags tags %}
+{% if group_name %}
+  {# User submitted form and task is complete -> show results  #}
+  <div style="display:flex; flex-direction:row; margin-bottom:5px">
+    <button type="button" data-toggle="modal" data-target="#torsion-help-modal" class="btn btn-denali-secondary btn-above-viewer" title="Click this for advice on how to navigate this page">Help!</button>
+    <button id="fit-viewer" class="btn btn-denali-secondary btn-above-viewer hover-tooltip" data-toggle="tooltip" data-placement="auto" title="Re-center compounds in viewer">
+      <span class="icon fit-screen"></span>
+    </button>
+    <button id="save-viewer-gems" class="btn btn-denali-secondary btn-above-viewer hover-tooltip" data-toggle="tooltip" data-placement="auto" title="Save all poses in the viewer as gems" data-post-url="{% url 'ajax_save_viewer_gems' collection.id %}">
+      <span class="icon diamond"></span>
+    </button>
+    <button id="lowest-energy-btn" class="btn btn-denali-secondary btn-above-viewer" title="Click this to select the lowest energy pose for each shown compound" disabled>Lowest Energy</button>
+    <button id="match-dihedral-btn" class="btn btn-denali-secondary btn-above-viewer" title="Click this to select each pose at the same dihedral as the initially selected compound. This button is only available when there is a single pose in the viewer." disabled>Match Dihedral</button>
+    <button class="btn btn-denali-secondary btn-above-viewer dropdown-toggle" type="button" id="download" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="icon download"></span>
+      <span class="label">Download</span>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="download">
+      <button id="all" class="dropdown-item torsion-download" data-url="{% url 'downloadresultfile' current_view collection.id group_name %}">Download All</button>
+      <button id="displayed" class="dropdown-item torsion-download" data-url="{% url 'downloadresultfile' current_view collection.id group_name %}">Download Displayed - Viewer</button>
+      <button id="chart" class="dropdown-item torsion-download" data-url="{% url 'downloadresultfile' current_view collection.id group_name %}">Download Displayed - Graph</button>
+    </div>
+  </div>
+  <div>
+    <canvas id="dihedral-energy-chart"; style="max-height:250px"></canvas>
+  </div>
+  <div id='torsion-viewer' class="analysis-viewer" style="height:300px"></div>
+{% elif failure %}
+  <div class="centered-text-container">
+    <div><b style='color:red;'>Error:</b> Oh no, the torsion scan encountered an error.<br/>Please reach out to someone in MnI.</div>
+  </div>
+{% else %}
+  {# User has not yet submitted the form #}
+  <center>
+    Choose a compound from the dropdown below to select it as your "pioneer". In the viewer, click 4 atoms on the pioneer to define the dihedral
+    you would like to scan and click "Scan!". This dihedral will be scanned for all compounds in this collection. For more details on how this works, check out
+    the <a href="{% url "faq" %}">FAQ!</a>
+    <p></p>
+  </center>
+  <form id="torsion-form" class="analysis-form ajax-form" form-errors="torsion-errors" method="POST" action="{% url 'torsion' collection.id %}" style="width:100%">
+    <div class="errors" id="torsion-errors"></div>
+    {% csrf_token %}
+    <input style="display:none;" name="selected_atoms" value="hello world"></input>
+    <div style="display:flex; flex-direction:row">
+      <div style="width:80%">
+        <label for="choose-pioneer">Pioneer Compound</label>
+        <select name="pioneer" class="full-width" id="choose-pioneer">
+          {% for co in pioneer_options %}
+            <option data-id="co-{{ co.id }}" value="co-{{ co.id }}" moltext="{{ co.moltext }}">Compound: {{ co.compound.name }}</option>
+          {% endfor %}
+        </select>
+        <small class="help-text text-muted">The dihedral chosen for this compound will be applied to all compounds in this collection.</small>
+      </div>
+      <button id="torsion-btn" class="btn btn-denali-primary go-btn" type="submit" value="Submit" style="margin:auto" data-url="{% url 'torsion' collection.id %}" disabled>Scan!</button>
+    </div>
+  </form>
+  <div style="margin-top:5px">
+    <button id="fit-viewer" class="btn btn-denali-secondary hover-tooltip" data-toggle="tooltip" data-placement="auto" title="Re-center compounds in viewer" style="width:40px; margin-right:5px; justify-content:center">
+      <span class="icon fit-screen"></span>
+    </button>
+  </div>
+  <div id='torsion-viewer' class="analysis-viewer"></div>
+{% endif %}

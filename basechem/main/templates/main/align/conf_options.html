@@ -1,0 +1,3 @@
+{% for conf_id, conf_data in confs.items %}
+  <option value="{{ conf_id }}" data-id="{{ conf_id }}">{{ conf_data.r_bc_rmsd_to_lsalign }} - {{ conf_data.r_mmff_rel_energy }} {% if conf_id in saved_gem_ids %}*{% endif %}</option>
+{% endfor %}

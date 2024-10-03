@@ -1,0 +1,4 @@
+{% load tags %}
+{% for reference in references %}
+  <option data-id="{{ reference }}" value="{{ reference }}" {% if reference == initial_series %}selected{% endif %}>{{ reference|get_display_name }}</option>
+{% endfor %}

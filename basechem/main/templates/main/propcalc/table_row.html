@@ -1,0 +1,48 @@
+{% load tags mni_common_tags %}
+<tr id="co-{{ co.id }}" data-new-row="{{ new_row }}">
+  <td class="order-column reorder">{{ row_num }}</td>
+  <td style="width:250px">{{ co.compound|as_svg:"200,100" }}</td>
+  <td>{{ co.compound.name }}</td>
+  {% if property_results %}
+    {% for prop in props %}
+      {% with value=property_results|dict_get:co.pk|get_propcalc_val:prop %}
+        {% if "LogD" in prop %}
+          <td><p class="{{ value|pred_type }} {{ value|first|color_filter:prop }}">{{ value|first }}</p></td>
+        {% elif "TPSA" in prop %}
+          <td><p class="{{ value|color_filter:prop }}">{{ value }}</p></td>
+        {% elif "Prediction" in prop %}
+          <td>
+            <p class="{{ value|pred_type }} {{ value|first|color_filter:prop }} hover-tooltip"
+              data-toggle="tooltip" data-placement="top" data-html=true
+              title="Interpretation Image <br> <img src={{ value|last }} width=300px></img>">{{ value|first }}
+            </p>
+          </td>
+        {% elif "Probabilities" in prop %}
+          <!-- get_propcalc_val combines the probabilities path and the OOD flag -->
+          <td>
+            <p>
+              <img src={{ value|first }} width="175px" class="hover-tooltip" data-toggle="tooltip" data-placement="top" data-html=true title="Probabilities <br> <img src={{ value|first }} width=325px</img>"></img>
+              {% if value|last is True %}<span class="hover-tooltip icon flag bg-orange" data-toggle="tooltip" data-placement="right" title="Compound is outside the domain of applicability of the current model, meaning this molecule is less than 0.3 Tanimoto similarity to any molecule in the training set. This flag doesn't mean we can't use this prediction, though it may be less accurate. Reach out to MnI for help interpreting this result."></span>{% endif %}
+            </p>
+          </td>
+        {% else %}
+          <td><p>{{ value }}</p></td>
+        {% endif %}
+      {% endwith %}
+    {% endfor %}
+    <td class="d-flex justify-content-end">
+      <div class="btn-row flex-nowrap">
+        <button type="button" class="btn btn-icon hover-tooltip" data-toggle="tooltip" data-placement="auto" title="Copy MW/TPSA/LogD to clipboard" onclick="copyToClipboard('#base-properties-{{ co.pk }}', false)"><span class="icon copy"></span></button>
+        {% include "main/components/tables/add_comps_btn.html" %}
+      </div>
+    </td>
+  {% else %}
+    {% for prop in props %}
+      <td></td>
+    {% endfor %}
+    <td>
+      {% call_object_method co "get_propcalc_task_name" collection as task_name %}
+      <span class="task-status" id="co-{{ co.id }}" data-task-name="{{ task_name }}">Job running</span>
+    </td>
+  {% endif %}
+</tr>

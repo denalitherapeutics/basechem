@@ -1,0 +1,40 @@
+{% load static crispy_forms_tags tags mni_common_tags %}
+{% if group_name %}
+  <p>
+    <b>Pioneer:</b> {{ pioneer.compound.name }}</br>
+    <b>Atom numbers of dihedral on pioneer:</b> {{ pioneer_dihedral_atom_nums }}
+  </p>
+  <a class="btn btn-denali-secondary" style="margin-bottom:5px; width:240px" href="{% url "torsion" collection.id %}">
+    <span class="icon arrow-left"></span>
+    <span>Scan a different dihedral</span>
+  </a>
+{% endif %}
+<div id="compounds-table-container">
+  <table id="torsion-table" class="table table-striped table-bordered full-width">
+    <thead>
+      <tr>
+        <th class="order-column">Order</th>
+        <th style="width:200px">Structure</th>
+        <th>Compound</th>
+        <th>Conformer</th>
+        {% if group_name %}
+          <th style="width:130px">
+            <div class="d-flex align-items-center">
+              <span class="hover-tooltip icon question-mark bg-orange mr-1" data-toggle="tooltip" data-placement="right" title="{{ energytooltip }}"></span>
+              Torsion - RelE (kcal/mol)
+            </div>
+          </th>
+          <th>Toggle</th>
+          <th></th>
+        {% else %}
+          <th>Series</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for co in compound_occurrences %}
+        {% include "main/torsion/table_row.html" with row_num=forloop.counter %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

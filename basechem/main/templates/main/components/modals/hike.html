@@ -1,0 +1,26 @@
+{% load static crispy_forms_tags %}
+{% block content %}
+  <div class="modal fade" id="hike-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="hike-modal-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="hike-modal-label">Hike to another analysis</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form class="transparent-form" action="{% url 'hike' collection.id %}" method="POST" enctype="multipart/form-data">
+          <div class="modal-body">
+            <p>{{ hike_form.directions }}</p>
+            {% csrf_token %}
+            {% crispy hike_form %}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-denali-secondary" data-dismiss="modal">Exit</button>
+            <button type="submit" class="btn btn-denali-primary">Hike!</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

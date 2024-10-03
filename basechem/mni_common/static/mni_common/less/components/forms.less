@@ -1,0 +1,67 @@
+@import '../constants.less';
+
+.blue-form {
+  background-color: @paleBlue;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.transparent-form {
+  width: 100%;
+  background-color: transparent;
+  padding: 0px;
+  border-radius: 0px;
+}
+
+.half-page-form-container {
+  width: 40%;
+}
+
+.form-control::placeholder { 
+  color: @lighterGrey !important;
+}
+
+form {
+  // Required fields
+  .asteriskField {
+    color: @red;
+    font-size: 0.625rem;
+
+    &::before {
+      content: " ";
+    }
+
+    &::after {
+      content: "required";
+      color: @red;
+      font-size: 0.625rem;
+    }
+  }
+
+  .selectdatewidget {
+    display: inline-block;
+    width: 33%;
+  }
+
+  // Form help text in Crispy forms
+  small[id^="hint_id"] {
+    font-size: 0.875rem;
+    line-height: 1.43;
+    text-align: center;
+    color: @lightGrey;
+  }
+
+  .form-label {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: @lightGrey;
+  }
+
+  // Content of input fields
+  input, textarea {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: @darkGrey;
+  }
+
+}

@@ -1,0 +1,229 @@
+@import '../constants.less';
+
+.button-common-mixin() {
+  padding: 0.5rem;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .label {
+    padding: 0 0 0 0.25rem;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    /* Most buttons look the same when hovering */
+    cursor: pointer;
+    border-color: @hoverColor;
+    background-color: @hoverColor;
+    color: @white;
+
+    .icon {
+      background-color: @white;
+    }
+  }
+
+}
+
+/* Bootstrap uses 'btn-primary', so let's use 'btn-denali-primary' to make sure we're not
+picking up bootstrap styling when we don't want to. */
+.btn-denali-primary-mixin() {
+  .button-common-mixin();
+  background-color: @lightBlue;
+  border-color: @lightBlue;
+  color: @white;
+
+  .icon {
+    background-color: @white;
+  }
+}
+
+.btn.btn-denali-primary {
+  .btn-denali-primary-mixin();
+}
+
+/* Bootstrap uses 'btn-secondary', so let's use 'btn-denali-secondary' to make sure we're not
+picking up bootstrap styling when we don't want to. */
+.btn-denali-secondary-mixin() {
+  .button-common-mixin();
+  background-color: @white;
+  color: @lightBlue;
+  border: solid 2px @lightBlue;
+
+  .icon {
+    background-color: @lightBlue;
+  }
+
+}
+
+.btn.btn-denali-secondary {
+  .btn-denali-secondary-mixin();
+}
+
+.btn.btn-denali-secondary-reversed {
+  .btn-denali-secondary-mixin();
+  border-color: @hoverColor;
+  background-color: @hoverColor;
+  color: @white;
+
+  .icon {
+    background-color: @white;
+  }
+
+  &:hover {
+    background-color: @white;
+    color: @lightBlue;
+    border: solid 2px @lightBlue;
+
+    .icon {
+      background-color: @lightBlue;
+    }
+  }
+}
+
+.btn-denali-grey-mixin() {
+  .button-common-mixin();
+  background-color: @white;
+  color: @lightGrey;
+  border: solid 2px @lightGrey;
+
+  .icon {
+    background-color: @lightGrey;
+  }
+
+}
+
+.btn.btn-denali-grey {
+  .btn-denali-grey-mixin();
+}
+
+.btn-denali-danger-mixin() {
+  .button-common-mixin();
+  background-color: @red;
+  color: @white;
+  border: solid 2px @red;
+
+  .icon {
+    background-color: @white;
+  }
+}
+
+.btn.btn-denali-danger {
+  .btn-denali-danger-mixin();
+}
+
+.btn.btn-denali-grey-reversed {
+  .btn-denali-secondary-mixin();
+  border-color: @darkishGrey;
+  background-color: @darkishGrey;
+  color: @white;
+
+  .icon {
+    background-color: @white;
+  }
+
+  &:hover {
+    background-color: @white;
+    color: @lightGrey;
+    border: solid 2px @lightGrey;
+
+    .icon {
+      background-color: @lightGrey;
+    }
+  }
+}
+
+/* Buttons that look like links */
+.btn-link-mixin() {
+  .btn-denali-secondary-mixin();
+  border-color: @white;
+  .button-common-mixin();
+}
+
+.btn.btn-link {
+  .btn-link-mixin();
+  padding: 0!important;
+}
+
+.btn.btn-cancel {
+  /* Cancel buttons look more like a link */
+  .btn-link-mixin();
+}
+
+.btn.btn-back {
+  /* Back buttons look like a link too. */
+  .btn-link-mixin();
+}
+
+.btn.btn-logout {
+  .btn-link-mixin();
+  /* No border on logout button */
+  border: none;
+  align-items: center;
+  /* This one is on a dark-blue background. */
+  background-color: @veryDarkBlue;
+  color: @white;
+
+  &.dropdown-toggle::after {
+    color: @white;
+  }
+}
+
+
+button.close {
+  color: @lightBlue;
+}
+
+/* Used for styling buttons that only contain an icon. */
+.btn.btn-icon {
+  .btn-denali-secondary-mixin();
+  background-color: transparent;
+  border: none;
+  padding: 1px;
+
+  &:hover {
+    background-color: transparent;
+
+    .icon {
+      background-color: @hoverColor !important;
+    }
+  }
+  &:disabled {
+    .icon {
+      background-color: @lightGrey;
+    }
+
+  }
+}
+
+.btn-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px 0px;
+
+  .btn {
+    justify-content: center;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+.btn.btn-table {
+  width: 125px;
+  justify-content: center;
+  float: right
+}
+
+.above-table-btn {
+  margin-bottom: 5px;
+  padding: 5px;
+}

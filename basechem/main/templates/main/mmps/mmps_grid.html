@@ -1,0 +1,17 @@
+{% load static tags %}
+{% if mmps %}
+  <div id="propcalc-grid-container">
+    {% for mmp in mmps %}
+      <div class="propcalc-grid-item">
+        <div>{{ mmp|as_svg:"100,100" }}</div>
+        <p>{{ mmp.name }}</p>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div style="height:50vh">
+    <div class="centered-text-container">
+      <div>No MMPs found with MMPDB</div>
+    </div>
+  </div>
+{% endif %}

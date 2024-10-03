@@ -1,0 +1,5 @@
+{% load mni_common_tags %}
+{% call_object_method co "moltext" True as moltext %}
+<button class="btn btn-icon add-comp-btn hover-tooltip" id="add-comp-btn-{{ co.pk }}" data-moltext="{{ moltext }}" type="button" title="Add compound(s)">
+  <span class="icon plant"></span>
+</button>

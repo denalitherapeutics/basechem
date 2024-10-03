@@ -1,0 +1,15 @@
+<h3>{{ title }}</h3>
+<ul>
+  <li>
+    {% with choices.0 as choice %}
+      <form method="GET" action="">
+        <input  type="text"
+          value="{{ spec.value|default_if_none:'' }}"
+          name="{{ spec.parameter_name }}"/>
+        {% if not choice.selected %}
+          <strong><a href="{{ choice.query_string }}">x Remove</a></strong>
+        {% endif %}
+      </form>
+    {% endwith %}
+  </li>
+</ul>

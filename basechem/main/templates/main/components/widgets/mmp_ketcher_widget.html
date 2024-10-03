@@ -1,0 +1,13 @@
+{% load static %}
+<textarea name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %} style="display:none">{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+<p class="text-red" id="{{ widget.attrs.id }}-loading">Loading sketcher....</p>
+<div id="{{ widget.attrs.id }}-frame-group" style="display:none;">
+  <iframe id="{{ widget.attrs.id }}-frame" src="{% url 'ketcher' %}" width="100%" height="500px"></iframe>
+  <div class="btn-row">
+    <button id="{{ widget.attrs.id }}-variable-btn" type="button" class="btn btn-denali-secondary hover-tooltip" data-toggle="tooltip" data-placement="top" title="Use the select tool to highlight a substructure, then click this button to set the substructure as the variable region.">Set Variable Region</button>
+    <button id="{{ widget.attrs.id }}-clear-btn" type="button" class="btn btn-denali-secondary hover-tooltip" data-toggle="tooltip" data-placement="top" title="Clear all highlights in the sketcher">Clear Highlights</button>
+  </div>
+</div>
+<script>
+  mmpKetcherHandler("{{ widget.attrs.id }}")
+</script>

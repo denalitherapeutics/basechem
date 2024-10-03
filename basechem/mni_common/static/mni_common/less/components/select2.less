@@ -1,0 +1,22 @@
+.select2-no-options {
+    .select2-dropdown {
+      display: none !important;
+    }
+    .select2-container--default.select2-container--open.select2-container--below .select2-selection--single, .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple
+    {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+
+.select2-results__option {
+  font-size: 12px;
+  word-wrap: break-word;
+}
+
+// By default, select2 multiple select widgets have a min-height of 32px before a selection is made
+// and 38px after a selection is made. We update the minimum height here so that the widget does
+// not change heights unnecessarily when a selection is made.
+.select2-container .select2-selection--multiple {
+  min-height: 38px !important;
+}

@@ -1,0 +1,45 @@
+{% load tags %}
+{% if group_name %}
+  {% load static crispy_forms_tags %}
+  {# User submitted form and task is complete -> show results  #}
+  <div style="display:none" id="selected-ids"></div>
+  <div style="margin-bottom:10px;">
+    <label for="display-receptor">Receptor to Display</label>
+    <select class="full-width" id="display-receptor" data-placeholder="Select receptor" disabled></select>
+    <label for="display-reference">Reference Compounds to Display</label>
+    <select class="full-width" id="display-reference" data-placeholder="Select reference compounds" disabled multiple></select>
+    <small class="help-text text-muted">The selected reference compounds will appear in the display. You can toggle them on and off as you please.</small>
+  </div>
+  <div class="dropdown" style="display:flex; flex-direction:row; margin-bottom:5px">
+    <button id="fit-viewer" class="btn btn-denali-secondary btn-above-viewer hover-tooltip" data-toggle="tooltip" data-placement="auto" title="Re-center compounds in viewer">
+      <span class="icon fit-screen"></span>
+    </button>
+    <button id="save-viewer-gems" class="btn btn-denali-secondary btn-above-viewer hover-tooltip" data-toggle="tooltip" data-placement="auto" title="Save all poses in the viewer as gems" data-post-url="{% url 'ajax_save_viewer_gems' collection.id %}">
+      <span class="icon diamond"></span>
+    </button>
+    <button id="toggle-torsion-alerts" class="btn btn-denali-secondary btn-above-viewer hover-tooltip" data-toggle="tooltip" data-placement="auto" title="Show torsion alerts. For more information, check out the FAQ page.">
+      <span class="icon warning"></span>
+    </button>
+    <button id="toggle-toklat-annotations" class="btn btn-denali-secondary btn-above-viewer hover-tooltip" data-toggle="tooltip" data-placement="auto" title="Show interactions between the pose and receptor.">
+      <span class="icon compare-arrows"></span>
+    </button>
+    <button class="btn btn-denali-secondary btn-above-viewer dropdown-toggle" type="button" id="download" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="icon download"></span>
+      <span class="label">Download</span>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="download">
+      <button id="all" class="dropdown-item dock-download" data-url="{% url 'downloadresultfile' current_view collection.id group_name %}">Download All</button>
+      <button id="displayed" class="dropdown-item dock-download" data-url="{% url 'downloadresultfile' current_view collection.id group_name %}">Download Displayed</button>
+    </div>
+  </div>
+  <div id='dock-viewer' class="analysis-viewer"></div>
+{% elif failure %}
+  <div class="centered-text-container">
+    <div><b style='color:red;'>Error:</b> Oh no, docking encountered an error.<br/>This could be because of Schr&ouml;dinger licenses, but in case it's not: please reach out to someone in MnI.</div>
+  </div>
+{% else %}
+  {# User has not yet submitted the form #}
+  <div class="centered-text-container">
+    <div>Select your reference and press "Dock!" to perform docking</div>
+  </div>
+{% endif %}

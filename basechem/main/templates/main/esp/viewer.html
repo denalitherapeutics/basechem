@@ -1,0 +1,54 @@
+{% load tags %}
+{% if group_name %}
+  {# User submitted form and task is complete -> show results  #}
+  <div style="display:none" id="selected-ids"></div>
+  <div style="margin-bottom:10px">
+    <div>
+      <label for="display-reference">Reference Ligands to Display</label>
+      <select class="full-width" id="display-reference" data-placeholder="Select reference compounds" multiple disabled></select>
+      <small class="help-text text-muted">The selected reference compounds will appear in the display. You can toggle them on and off as you please.</small>
+    </div>
+    <div>
+      <label for="reference-opacity">Reference Opacity</label>
+      <input class="toggle-opacity" type="number" name="opacity" value="0.8" min="0" max="1" step="0.1" class="numberinput form-control" id="reference-opacity">
+    </div>
+    <div>
+      <label for="toggle-surface-color-max">ESP gradient max</label>
+      <input type="range" min="0.5" max="5" value="3" step="0.5" class="slider" id="toggle-surface-color-max"  name="surface-color-max" class="form-control">
+    </div>
+    <div class="dropdown" style="display:flex; flex-direction:row">
+      <button id="fit-viewer" class="btn btn-denali-secondary btn-above-viewer hover-tooltip" data-toggle="tooltip" data-placement="bottom" title="Re-center compounds in viewer">
+        <span class="icon fit-screen"></span>
+      </button>
+      <button type="button" data-toggle="modal" data-target="#esp-help-modal" class="btn btn-denali-secondary btn-above-viewer"title="Click this for advice on how to navigate this page">Help!</button>
+      <button class="btn btn-denali-secondary btn-above-viewer hover-tooltip" data-toggle="tooltip" data-placement="bottom" title="Toggle between viewing ESP maps stacked on top of eachother and viewing them individually" id="toggle-viewer">Toggle Viewer</button>
+      <button class="btn btn-denali-secondary btn-above-viewer hover-tooltip" data-toggle="tooltip" data-placement="bottom" title="Show/hide the receptors" id="toggle-receptors">Toggle Receptors</button>
+      <button class="btn btn-denali-secondary btn-above-viewer dropdown-toggle" type="button" id="download" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="icon download"></span>
+        <span class="label">Download</span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="download">
+        <button id="all" class="dropdown-item esp-download" data-url="{% url 'downloadresultfile' current_view collection.id group_name %}">Download All</button>
+        <button id="displayed" class="dropdown-item esp-download" data-url="{% url 'downloadresultfile' current_view collection.id group_name %}">Download Displayed</button>
+      </div>
+    </div>
+  </div>
+  <div style="position:relative">
+    <div style="position:absolute;  top: 0; left: 0;" id='esp-viewer' class="analysis-viewer"></div>
+    <div style="visibility: hidden; position:absolute;  top: 0; left: 0; width:100%; display:grid;grid-template-columns: 1fr 1fr;grid-row: auto auto;" id="quad-esp-viewer-container">
+      <div id='esp-viewer-0' class="analysis-viewer" style="min-height:200px; min-width:100px;"></div>
+      <div id='esp-viewer-1' class="analysis-viewer" style="min-height:200px; min-width:100px;"></div>
+      <div id='esp-viewer-2' class="analysis-viewer" style="min-height:200px; min-width:100px;"></div>
+      <div id='esp-viewer-3' class="analysis-viewer" style="min-height:200px; min-width:100px;"></div>
+    </div>
+  </div>
+{% elif failure %}
+  <div class="centered-text-container">
+    <div><b style='color:red;'>Error:</b> Oh no, this analysis encountered an error.<br/>This could be because of Schr&ouml;dinger licenses, but in case it's not: please reach out to someone in MnI.</div>
+  </div>
+{% else %}
+  {# User has not yet submitted the form #}
+  <div class="centered-text-container">
+    <div>Select your reference and press "Generate!" to generate ESP maps</div>
+  </div>
+{% endif %}
